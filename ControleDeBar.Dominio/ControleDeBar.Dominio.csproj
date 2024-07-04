@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="ModuloGarcom\" />
-    <Folder Include="ModuloProduto\" />
     <Folder Include="ModuloMesa\" />
     <Folder Include="ModuloPedido\" />
     <Folder Include="ModuloConta\" />
