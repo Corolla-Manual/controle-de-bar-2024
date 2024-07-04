@@ -1,20 +1,35 @@
 
 
+using ControleDeBar.Dominio.ModuloProduto;
+using ControleDeBar.Infra.Orm.Compartilhada;
+using ControleDeBar.Infra.Orm.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado;
+using ControleDeBar.WinApp.ModuloProduto;
 
 namespace ControleDeBar.WinApp
 {
     public partial class TelaPrincipalForm : Form
     {
         ControladorBase controlador;
+        IRepositorioProduto repositorioProduto;
 
         public static TelaPrincipalForm Instancia { get; private set; }
 
         public TelaPrincipalForm()
         {
             InitializeComponent();
+            Instancia = this;
+
+            ControleDeBarDbContext dbContext = new ControleDeBarDbContext();
+
+            repositorioProduto = new RepositorioProduto(dbContext);
         }
 
+        private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorProduto(repositorioProduto);
+            ConfigurarTelaPrincipal(controlador);
+        }
         public void AtualizarRodape(string texto)
         {
             statusLabelPrincipal.Text = texto;
@@ -82,5 +97,6 @@ namespace ControleDeBar.WinApp
         {
             Application.Exit();
         }
+
     }
 }

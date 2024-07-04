@@ -8,9 +8,9 @@ namespace ControleDeBar.WinApp.ModuloProduto
         TabelaProdutoControl tabelaProduto;
         IRepositorioProduto repositorioProduto;
 
-        public ControladorProduto()
+        public ControladorProduto(IRepositorioProduto repositorioProduto)
         {
-
+            this.repositorioProduto = repositorioProduto;
         }
 
         public override string TipoCadastro => "Produto";
@@ -23,17 +23,93 @@ namespace ControleDeBar.WinApp.ModuloProduto
 
         public override void Adicionar()
         {
-            throw new NotImplementedException();
+            List<Produto> ProdutosCadastradas = repositorioProduto.SelecionarTodos();
+
+            TelaProdutoForm telaProduto = new TelaProdutoForm(ProdutosCadastradas);
+
+            DialogResult resultado = telaProduto.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Produto novoRegistro = telaProduto.Produto;
+
+            repositorioProduto.Cadastrar(novoRegistro);
+
+            CarregarRegistros();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{novoRegistro.Nome}\" foi criado com sucesso!");
         }
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            int idSelecionado = tabelaProduto.ObterRegistroSelecionado();
+
+            Produto ProdutoSelecionado = repositorioProduto.SelecionarPorId(idSelecionado);
+
+            if (ProdutoSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Você precisa selecionar um registro para executar esta ação!",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            List<Produto> ProdutosCadastradas = repositorioProduto.SelecionarTodos();
+
+            TelaProdutoForm telaProduto = new TelaProdutoForm(ProdutosCadastradas);
+
+            telaProduto.Produto = ProdutoSelecionado;
+
+            DialogResult resultado = telaProduto.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Produto registroEditado = telaProduto.Produto;
+
+            repositorioProduto.Editar(idSelecionado, registroEditado);
+
+            CarregarRegistros();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{registroEditado.Nome}\" foi editado com sucesso!");
         }
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            int idSelecionado = tabelaProduto.ObterRegistroSelecionado();
+
+            Produto ProdutoSelecionado = repositorioProduto.SelecionarPorId(idSelecionado);
+
+            if (ProdutoSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Você precisa selecionar um registro para executar esta ação!",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            DialogResult resposta = MessageBox.Show(
+                $"Você deseja realmente excluir o registro \"{ProdutoSelecionado.Nome}\" ",
+                "Confirmar Exclusão",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+                );
+
+            if (resposta != DialogResult.Yes)
+                return;
+
+            repositorioProduto.Excluir(idSelecionado);
+
+            CarregarRegistros();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{ProdutoSelecionado.Nome}\" foi excluído com sucesso!");
         }
 
         public override UserControl ObterListagem()

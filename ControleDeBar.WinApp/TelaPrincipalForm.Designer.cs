@@ -41,6 +41,7 @@
             toolStripSeparator3 = new ToolStripSeparator();
             lblTipoCadastro = new ToolStripLabel();
             pnlRegistros = new Panel();
+            produtoToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -58,6 +59,7 @@
             // 
             // cadastrosToolStripMenuItem
             // 
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produtoToolStripMenuItem });
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             cadastrosToolStripMenuItem.Size = new Size(86, 24);
             cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -160,6 +162,13 @@
             pnlRegistros.Size = new Size(800, 356);
             pnlRegistros.TabIndex = 3;
             // 
+            // produtoToolStripMenuItem
+            // 
+            produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
+            produtoToolStripMenuItem.Size = new Size(180, 24);
+            produtoToolStripMenuItem.Text = "Produto";
+            produtoToolStripMenuItem.Click += produtoToolStripMenuItem_Click;
+            // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -201,5 +210,6 @@
         private ToolStripLabel lblTipoCadastro;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripButton btnVisualizar;
+        private ToolStripMenuItem produtoToolStripMenuItem;
     }
 }

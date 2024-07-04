@@ -7,6 +7,16 @@ namespace ControleDeBar.Dominio.ModuloProduto
     {
         public String Nome { get; set; }
         public Double Preco { get; set; }
+
+        public Produto()
+        {
+
+        }
+        public Produto(string nome, double preco)
+        {
+            Nome = nome;
+            Preco = preco;
+        }
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
             Produto prod = (Produto)novoRegistro;
