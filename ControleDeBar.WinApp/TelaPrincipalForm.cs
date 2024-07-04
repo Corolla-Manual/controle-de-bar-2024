@@ -4,7 +4,7 @@ using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.Infra.Orm.Compartilhada;
 using ControleDeBar.Infra.Orm.ModuloProduto;
 using ControleDeBar.Dominio.ModuloGarcom;
-using ControleDeBar.Infra.Orm.Compartilhado;
+using ControleDeBar.Infra.Orm.Compartilhada;
 using ControleDeBar.Infra.Orm.ModuloGarcom;
 using ControleDeBar.WinApp.Compartilhado;
 using ControleDeBar.WinApp.ModuloProduto;
@@ -31,8 +31,6 @@ namespace ControleDeBar.WinApp
             repositorioProduto = new RepositorioProduto(dbContext);
 
             Instancia = this;
-
-            ControleDeBarDbContext dbContext = new ControleDeBarDbContext();
 
             repositorioGarçom = new RepositorioGarcomEmOrm(dbContext);
         }

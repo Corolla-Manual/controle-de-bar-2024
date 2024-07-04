@@ -1,4 +1,5 @@
-﻿using ControleDeBar.Dominio.ModuloProduto;
+﻿using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Dominio.ModuloProduto;
 using Microsoft.EntityFrameworkCore;
 
 namespace ControleDeBar.Infra.Orm.Compartilhada
@@ -6,6 +7,8 @@ namespace ControleDeBar.Infra.Orm.Compartilhada
     public class ControleDeBarDbContext : DbContext
     {
         public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Garcom> Garçoms { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -34,6 +37,23 @@ namespace ControleDeBar.Infra.Orm.Compartilhada
                 produtoBuilder.Property(p => p.Preco)
                 .IsRequired()
                 .HasColumnType("real");
+            });
+
+            modelBuilder.Entity<Garcom>(garçomBuilder =>
+            {
+                garçomBuilder.ToTable("TBGarçom");
+
+                garçomBuilder.Property(d => d.Id)
+                    .IsRequired()
+                    .ValueGeneratedOnAdd();
+
+                garçomBuilder.Property(d => d.Nome)
+                    .IsRequired()
+                    .HasColumnType("varchar(250)");
+
+                garçomBuilder.Property(d => d.Cpf)
+                    .IsRequired()
+                    .HasColumnType("varchar(14)");
             });
 
             base.OnModelCreating(modelBuilder);
