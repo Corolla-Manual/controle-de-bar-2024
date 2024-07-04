@@ -3,8 +3,12 @@
 using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.Infra.Orm.Compartilhada;
 using ControleDeBar.Infra.Orm.ModuloProduto;
+using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Infra.Orm.Compartilhado;
+using ControleDeBar.Infra.Orm.ModuloGarcom;
 using ControleDeBar.WinApp.Compartilhado;
 using ControleDeBar.WinApp.ModuloProduto;
+using ControleDeBar.WinApp.ModuloGarçom;
 
 namespace ControleDeBar.WinApp
 {
@@ -12,6 +16,8 @@ namespace ControleDeBar.WinApp
     {
         ControladorBase controlador;
         IRepositorioProduto repositorioProduto;
+
+        IRepositorioGarcom repositorioGarçom;
 
         public static TelaPrincipalForm Instancia { get; private set; }
 
@@ -23,6 +29,19 @@ namespace ControleDeBar.WinApp
             ControleDeBarDbContext dbContext = new ControleDeBarDbContext();
 
             repositorioProduto = new RepositorioProduto(dbContext);
+
+            Instancia = this;
+
+            ControleDeBarDbContext dbContext = new ControleDeBarDbContext();
+
+            repositorioGarçom = new RepositorioGarcomEmOrm(dbContext);
+        }
+
+        private void garcomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorGarcom(repositorioGarçom);
+
+            ConfigurarTelaPrincipal(controlador);
         }
 
         private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -34,6 +53,7 @@ namespace ControleDeBar.WinApp
         {
             statusLabelPrincipal.Text = texto;
         }
+
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
         {
             lblTipoCadastro.Text = "Cadastro de " + controladorSelecionado.TipoCadastro;
@@ -97,6 +117,8 @@ namespace ControleDeBar.WinApp
         {
             Application.Exit();
         }
+
+
 
     }
 }
