@@ -1,6 +1,8 @@
-
-
+using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Infra.Orm.Compartilhado;
+using ControleDeBar.Infra.Orm.ModuloGarcom;
 using ControleDeBar.WinApp.Compartilhado;
+using ControleDeBar.WinApp.ModuloGarçom;
 
 namespace ControleDeBar.WinApp
 {
@@ -8,17 +10,33 @@ namespace ControleDeBar.WinApp
     {
         ControladorBase controlador;
 
+        IRepositorioGarcom repositorioGarçom;
+
         public static TelaPrincipalForm Instancia { get; private set; }
 
         public TelaPrincipalForm()
         {
             InitializeComponent();
+
+            Instancia = this;
+
+            ControleDeBarDbContext dbContext = new ControleDeBarDbContext();
+
+            repositorioGarçom = new RepositorioGarcomEmOrm(dbContext);
+        }
+
+        private void garcomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorGarcom(repositorioGarçom);
+
+            ConfigurarTelaPrincipal(controlador);
         }
 
         public void AtualizarRodape(string texto)
         {
             statusLabelPrincipal.Text = texto;
         }
+
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
         {
             lblTipoCadastro.Text = "Cadastro de " + controladorSelecionado.TipoCadastro;
@@ -82,5 +100,7 @@ namespace ControleDeBar.WinApp
         {
             Application.Exit();
         }
+
+
     }
 }

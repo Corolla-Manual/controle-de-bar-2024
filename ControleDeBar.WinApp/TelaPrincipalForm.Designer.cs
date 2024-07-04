@@ -30,6 +30,7 @@
         {
             menuStrip1 = new MenuStrip();
             cadastrosToolStripMenuItem = new ToolStripMenuItem();
+            garcomToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
@@ -58,9 +59,17 @@
             // 
             // cadastrosToolStripMenuItem
             // 
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { garcomToolStripMenuItem });
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             cadastrosToolStripMenuItem.Size = new Size(86, 24);
             cadastrosToolStripMenuItem.Text = "Cadastros";
+            // 
+            // garcomToolStripMenuItem
+            // 
+            garcomToolStripMenuItem.Name = "garcomToolStripMenuItem";
+            garcomToolStripMenuItem.Size = new Size(180, 24);
+            garcomToolStripMenuItem.Text = "Garcom";
+            garcomToolStripMenuItem.Click += garcomToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -201,5 +210,6 @@
         private ToolStripLabel lblTipoCadastro;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripButton btnVisualizar;
+        private ToolStripMenuItem garcomToolStripMenuItem;
     }
 }
