@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="ModuloProduto\" />
     <Folder Include="ModuloGarcom\" />
-    <Folder Include="ModuloMesa\" />
     <Folder Include="ModuloPedido\" />
     <Folder Include="ModuloConta\" />
   </ItemGroup>

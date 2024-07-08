@@ -31,6 +31,7 @@
             menuStrip1 = new MenuStrip();
             cadastrosToolStripMenuItem = new ToolStripMenuItem();
             garcomToolStripMenuItem = new ToolStripMenuItem();
+            produtoToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
@@ -42,7 +43,7 @@
             toolStripSeparator3 = new ToolStripSeparator();
             lblTipoCadastro = new ToolStripLabel();
             pnlRegistros = new Panel();
-            produtoToolStripMenuItem = new ToolStripMenuItem();
+            mesaToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -60,8 +61,7 @@
             // 
             // cadastrosToolStripMenuItem
             // 
-            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { garcomToolStripMenuItem });
-            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produtoToolStripMenuItem });
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { garcomToolStripMenuItem, produtoToolStripMenuItem, mesaToolStripMenuItem });
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             cadastrosToolStripMenuItem.Size = new Size(86, 24);
             cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -72,6 +72,13 @@
             garcomToolStripMenuItem.Size = new Size(180, 24);
             garcomToolStripMenuItem.Text = "Garcom";
             garcomToolStripMenuItem.Click += garcomToolStripMenuItem_Click;
+            // 
+            // produtoToolStripMenuItem
+            // 
+            produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
+            produtoToolStripMenuItem.Size = new Size(180, 24);
+            produtoToolStripMenuItem.Text = "Produto";
+            produtoToolStripMenuItem.Click += produtoToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -171,12 +178,12 @@
             pnlRegistros.Size = new Size(800, 356);
             pnlRegistros.TabIndex = 3;
             // 
-            // produtoToolStripMenuItem
+            // mesaToolStripMenuItem
             // 
-            produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            produtoToolStripMenuItem.Size = new Size(180, 24);
-            produtoToolStripMenuItem.Text = "Produto";
-            produtoToolStripMenuItem.Click += produtoToolStripMenuItem_Click;
+            mesaToolStripMenuItem.Name = "mesaToolStripMenuItem";
+            mesaToolStripMenuItem.Size = new Size(180, 24);
+            mesaToolStripMenuItem.Text = "Mesa";
+            mesaToolStripMenuItem.Click += mesaToolStripMenuItem_Click;
             // 
             // TelaPrincipalForm
             // 
@@ -221,5 +228,6 @@
         private ToolStripButton btnVisualizar;
         private ToolStripMenuItem garcomToolStripMenuItem;
         private ToolStripMenuItem produtoToolStripMenuItem;
+        private ToolStripMenuItem mesaToolStripMenuItem;
     }
 }
