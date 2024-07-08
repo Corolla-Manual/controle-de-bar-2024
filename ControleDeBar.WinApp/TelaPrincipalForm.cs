@@ -1,14 +1,17 @@
 ﻿
 
 using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Dominio.ModuloPedido;
 using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.Infra.Orm.Compartilhada;
 using ControleDeBar.Infra.Orm.ModuloGarcom;
+using ControleDeBar.Infra.Orm.ModuloMesa;
 using ControleDeBar.Infra.Orm.ModuloPedido;
 using ControleDeBar.Infra.Orm.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado;
 using ControleDeBar.WinApp.ModuloGarçom;
+using ControleDeBar.WinApp.ModuloMesa;
 using ControleDeBar.WinApp.ModuloPedido;
 using ControleDeBar.WinApp.ModuloProduto;
 
