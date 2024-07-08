@@ -1,4 +1,5 @@
 ﻿using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Dominio.ModuloPedido;
 using ControleDeBar.Dominio.ModuloProduto;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,8 +9,7 @@ namespace ControleDeBar.Infra.Orm.Compartilhada
     {
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Garcom> Garçoms { get; set; }
-
-
+        public DbSet<Pedido> Pedidos { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionString =
@@ -54,6 +54,32 @@ namespace ControleDeBar.Infra.Orm.Compartilhada
                 garçomBuilder.Property(d => d.Cpf)
                     .IsRequired()
                     .HasColumnType("varchar(14)");
+            });
+
+            modelBuilder.Entity<Pedido>(pedidoBuilder =>
+            {
+                pedidoBuilder.ToTable("TBPedido");
+
+                pedidoBuilder.Property(p => p.Id)
+                .IsRequired()
+                .ValueGeneratedOnAdd();
+
+                pedidoBuilder.Property(p => p.NumeroPedido)
+                .IsRequired()
+                .HasColumnType("int");
+
+                pedidoBuilder.Property(p => p.Quantidade)
+                .IsRequired()
+                .HasColumnType("int");
+
+                pedidoBuilder.HasOne(p => p.Produto)
+                .WithMany()
+                .IsRequired()
+                .HasForeignKey("Produto_Id")
+                .HasConstraintName("FK_TBPedido_TBProduto")
+                .OnDelete(DeleteBehavior.NoAction);
+
+
             });
 
             base.OnModelCreating(modelBuilder);
