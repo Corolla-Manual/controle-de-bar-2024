@@ -32,6 +32,8 @@
             cadastrosToolStripMenuItem = new ToolStripMenuItem();
             garcomToolStripMenuItem = new ToolStripMenuItem();
             produtoToolStripMenuItem = new ToolStripMenuItem();
+            pedidoToolStripMenuItem = new ToolStripMenuItem();
+            produtoToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
@@ -61,6 +63,7 @@
             // 
             // cadastrosToolStripMenuItem
             // 
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { garcomToolStripMenuItem, produtoToolStripMenuItem, pedidoToolStripMenuItem });
             cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { garcomToolStripMenuItem, produtoToolStripMenuItem, mesaToolStripMenuItem });
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             cadastrosToolStripMenuItem.Size = new Size(86, 24);
@@ -72,6 +75,20 @@
             garcomToolStripMenuItem.Size = new Size(180, 24);
             garcomToolStripMenuItem.Text = "Garcom";
             garcomToolStripMenuItem.Click += garcomToolStripMenuItem_Click;
+            // 
+            // produtoToolStripMenuItem
+            // 
+            produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
+            produtoToolStripMenuItem.Size = new Size(180, 24);
+            produtoToolStripMenuItem.Text = "Produto";
+            produtoToolStripMenuItem.Click += produtoToolStripMenuItem_Click;
+            // 
+            // pedidoToolStripMenuItem
+            // 
+            pedidoToolStripMenuItem.Name = "pedidoToolStripMenuItem";
+            pedidoToolStripMenuItem.Size = new Size(180, 24);
+            pedidoToolStripMenuItem.Text = "Pedido";
+            pedidoToolStripMenuItem.Click += pedidoToolStripMenuItem_Click;
             // 
             // produtoToolStripMenuItem
             // 
@@ -228,6 +245,7 @@
         private ToolStripButton btnVisualizar;
         private ToolStripMenuItem garcomToolStripMenuItem;
         private ToolStripMenuItem produtoToolStripMenuItem;
+        private ToolStripMenuItem pedidoToolStripMenuItem;
         private ToolStripMenuItem mesaToolStripMenuItem;
     }
 }

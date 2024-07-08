@@ -1,17 +1,16 @@
+ï»¿
 
-
+using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Dominio.ModuloPedido;
 using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.Infra.Orm.Compartilhada;
-using ControleDeBar.Infra.Orm.ModuloProduto;
-using ControleDeBar.Dominio.ModuloGarcom;
-using ControleDeBar.Infra.Orm.Compartilhada;
 using ControleDeBar.Infra.Orm.ModuloGarcom;
+using ControleDeBar.Infra.Orm.ModuloPedido;
+using ControleDeBar.Infra.Orm.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado;
+using ControleDeBar.WinApp.ModuloGarÃ§om;
+using ControleDeBar.WinApp.ModuloPedido;
 using ControleDeBar.WinApp.ModuloProduto;
-using ControleDeBar.WinApp.ModuloGarçom;
-using ControleDeBar.WinApp.ModuloMesa;
-using ControleDeBar.Dominio.ModuloMesa;
-using ControleDeBar.Infra.Orm.ModuloMesa;
 
 namespace ControleDeBar.WinApp
 {
@@ -20,7 +19,8 @@ namespace ControleDeBar.WinApp
         ControladorBase controlador;
         IRepositorioProduto repositorioProduto;
         IRepositorioMesa repositorioMesa;
-        IRepositorioGarcom repositorioGarçom;
+        IRepositorioGarcom repositorioGarè¼Ÿm;
+        IRepositorioPedido repositorioPedido;
 
         public static TelaPrincipalForm Instancia { get; private set; }
 
@@ -33,16 +33,17 @@ namespace ControleDeBar.WinApp
 
             repositorioProduto = new RepositorioProduto(dbContext);
 
-            Instancia = this;
+            repositorioGarè¼Ÿm = new RepositorioGarcomEmOrm(dbContext);
 
-            repositorioGarçom = new RepositorioGarcomEmOrm(dbContext);
+            repositorioGarè¼Ÿm = new RepositorioGarcomEmOrm(dbContext);
 
             repositorioMesa = new RepositorioMesaEmOrm(dbContext);
+            repositorioPedido = new RepositorioPedidoEmOrm(dbContext);
         }
 
         private void garcomToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorGarcom(repositorioGarçom);
+            controlador = new ControladorGarcom(repositorioGarè¼Ÿm);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -59,6 +60,12 @@ namespace ControleDeBar.WinApp
             ConfigurarTelaPrincipal(controlador);
         }
 
+
+        private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorPedido(repositorioPedido, repositorioProduto);
+            ConfigurarTelaPrincipal(controlador);
+        }
         public void AtualizarRodape(string texto)
         {
             statusLabelPrincipal.Text = texto;
@@ -127,6 +134,5 @@ namespace ControleDeBar.WinApp
         {
             Application.Exit();
         }
-
     }
 }
