@@ -1,9 +1,4 @@
 ﻿using ControleDeBar.Dominio.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleDeBar.Dominio.ModuloGarcom
 {
@@ -37,6 +32,10 @@ namespace ControleDeBar.Dominio.ModuloGarcom
 
             Nome = garçom.Nome;
             Cpf = garçom.Cpf;
+        }
+        public override string ToString()
+        {
+            return $"{Nome}";
         }
     }
 }

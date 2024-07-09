@@ -43,5 +43,9 @@ namespace ControleDeBar.Dominio.ModuloPedido
         {
             return Produto.Preco * Quantidade;
         }
+        public override string ToString()
+        {
+            return $"Pedido Nº {NumeroPedido}";
+        }
     }
 }

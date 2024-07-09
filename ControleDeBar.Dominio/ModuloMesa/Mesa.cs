@@ -1,9 +1,4 @@
 ﻿using ControleDeBar.Dominio.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleDeBar.Dominio.ModuloMesa
 {
@@ -32,8 +27,11 @@ namespace ControleDeBar.Dominio.ModuloMesa
             Mesa mesa = (Mesa)novoRegistro;
 
             Ocupada = mesa.Ocupada;
-            NumeroMesa = mesa.NumeroMesa; 
+            NumeroMesa = mesa.NumeroMesa;
         }
-
+        public override string ToString()
+        {
+            return $"Mesa Nº {NumeroMesa}";
+        }
     }
 }
