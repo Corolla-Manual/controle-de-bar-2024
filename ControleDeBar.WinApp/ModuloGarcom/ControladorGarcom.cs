@@ -128,6 +128,12 @@ namespace ControleDeBar.WinApp.ModuloGarcom
             List<Garcom> garçoms = repositorioGarcom.SelecionarTodos();
 
             tabelaGarcom.AtualizarRegistros(garçoms);
+            AtualizarQuantidadeRodape();
+        }
+
+        private void AtualizarQuantidadeRodape()
+        {
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {repositorioGarcom.SelecionarTodos().Count} registro(s)...");
         }
     }
 }
