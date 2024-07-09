@@ -17,7 +17,6 @@
     <Folder Include="ModuloGarcom\" />
     <Folder Include="ModuloPedido\" />
     <Folder Include="ModuloMesa\" />
-    <Folder Include="ModuloConta\" />
   </ItemGroup>
 
 </Project>

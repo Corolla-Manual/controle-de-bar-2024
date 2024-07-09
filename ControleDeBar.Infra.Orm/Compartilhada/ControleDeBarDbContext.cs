@@ -2,6 +2,7 @@
 using ControleDeBar.Dominio.ModuloPedido;
 using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.Dominio.ModuloMesa;
+using ControleDeBar.Dominio.ModuloConta;
 using Microsoft.EntityFrameworkCore;
 
 namespace ControleDeBar.Infra.Orm.Compartilhada
@@ -12,6 +13,7 @@ namespace ControleDeBar.Infra.Orm.Compartilhada
         public DbSet<Garcom> Garçoms { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<Mesa> Mesas { get; set; }
+        public DbSet<Conta> Contas { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -101,6 +103,43 @@ namespace ControleDeBar.Infra.Orm.Compartilhada
                 mesaBuilder.Property(m => m.NumeroMesa)
                     .IsRequired()
                     .HasColumnType("varchar(5)");
+            });
+
+            modelBuilder.Entity<Conta>(contaBuilder =>
+            {
+                contaBuilder.ToTable("TBConta");
+
+                contaBuilder.Property(c => c.Id)
+                    .IsRequired()
+                    .ValueGeneratedOnAdd();
+
+                contaBuilder.HasMany(c => c.Pedidos)
+                    .WithOne()
+                    .HasForeignKey("Conta_Id")
+                    .HasConstraintName("FK_TBConta_TBPedido")
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                contaBuilder.HasOne(c => c.Mesa)
+                    .WithMany()
+                    .IsRequired()
+                    .HasForeignKey("Mesa_Id")
+                    .HasConstraintName("FK_TBConta_TBMesa")
+                    .OnDelete(DeleteBehavior.NoAction);
+
+                contaBuilder.HasOne(c => c.Garcom)
+                    .WithMany()
+                    .IsRequired()
+                    .HasForeignKey("Garcom_Id")
+                    .HasConstraintName("FK_TBConta_TBGarcom")
+                    .OnDelete(DeleteBehavior.NoAction);
+
+                contaBuilder.Property(c => c.Concluida)
+                    .IsRequired()
+                    .HasColumnType("bit");
+
+                contaBuilder.Property(c => c.ValorTotal)
+                    .IsRequired()
+                    .HasColumnType("real");
             });
 
             base.OnModelCreating(modelBuilder);

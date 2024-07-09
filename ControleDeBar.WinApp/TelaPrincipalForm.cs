@@ -1,15 +1,16 @@
-﻿
-
+﻿using ControleDeBar.Dominio.ModuloConta;
 using ControleDeBar.Dominio.ModuloGarcom;
 using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Dominio.ModuloPedido;
 using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.Infra.Orm.Compartilhada;
+using ControleDeBar.Infra.Orm.ModuloConta;
 using ControleDeBar.Infra.Orm.ModuloGarcom;
 using ControleDeBar.Infra.Orm.ModuloMesa;
 using ControleDeBar.Infra.Orm.ModuloPedido;
 using ControleDeBar.Infra.Orm.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado;
+using ControleDeBar.WinApp.ModuloConta;
 using ControleDeBar.WinApp.ModuloGarçom;
 using ControleDeBar.WinApp.ModuloMesa;
 using ControleDeBar.WinApp.ModuloPedido;
@@ -24,6 +25,7 @@ namespace ControleDeBar.WinApp
         IRepositorioMesa repositorioMesa;
         IRepositorioGarcom repositorioGar輟m;
         IRepositorioPedido repositorioPedido;
+        IRepositorioConta repositorioConta;
 
         public static TelaPrincipalForm Instancia { get; private set; }
 
@@ -38,10 +40,10 @@ namespace ControleDeBar.WinApp
 
             repositorioGar輟m = new RepositorioGarcomEmOrm(dbContext);
 
-            repositorioGar輟m = new RepositorioGarcomEmOrm(dbContext);
-
             repositorioMesa = new RepositorioMesaEmOrm(dbContext);
             repositorioPedido = new RepositorioPedidoEmOrm(dbContext);
+
+            repositorioConta = new RepositorioContaEmOrm(dbContext);
         }
 
         private void garcomToolStripMenuItem_Click(object sender, EventArgs e)
@@ -69,6 +71,13 @@ namespace ControleDeBar.WinApp
             controlador = new ControladorPedido(repositorioPedido, repositorioProduto);
             ConfigurarTelaPrincipal(controlador);
         }
+
+        private void contaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorConta(repositorioConta);
+            ConfigurarTelaPrincipal(controlador);
+        }
+
         public void AtualizarRodape(string texto)
         {
             statusLabelPrincipal.Text = texto;
