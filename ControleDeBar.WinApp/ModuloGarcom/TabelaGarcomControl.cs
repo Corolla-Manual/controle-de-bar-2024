@@ -15,11 +15,11 @@ namespace ControleDeBar.WinApp.ModuloGarcom
             grid.ConfigurarGridZebrado();
         }
         
-        public void AtualizarRegistros(List<Garcom> garçoms)
+        public void AtualizarRegistros(List<Garcom> garcoms)
         {
             grid.Rows.Clear();
 
-            foreach (Garcom g in garçoms)
+            foreach (Garcom g in garcoms)
                 grid.Rows.Add(g.Id, g.Nome, g.Cpf);
         }
 

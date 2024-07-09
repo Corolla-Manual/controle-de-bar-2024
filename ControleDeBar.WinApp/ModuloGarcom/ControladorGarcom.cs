@@ -24,9 +24,9 @@ namespace ControleDeBar.WinApp.ModuloGarcom
 
         public override void Adicionar()
         {
-            List<Garcom> garçomsCadastrados = repositorioGarcom.SelecionarTodos();
+            List<Garcom> garcomsCadastrados = repositorioGarcom.SelecionarTodos();
 
-            TelaGarcomForm telaGarcom = new TelaGarcomForm(garçomsCadastrados);
+            TelaGarcomForm telaGarcom = new TelaGarcomForm(garcomsCadastrados);
 
             DialogResult resultado = telaGarcom.ShowDialog();
 
@@ -46,9 +46,9 @@ namespace ControleDeBar.WinApp.ModuloGarcom
         {
             int idSelecionado = tabelaGarcom.ObterRegistroSelecionado();
 
-            Garcom garçomSelecionado = repositorioGarcom.SelecionarPorId(idSelecionado);
+            Garcom garcomSelecionado = repositorioGarcom.SelecionarPorId(idSelecionado);
 
-            if (garçomSelecionado == null)
+            if (garcomSelecionado == null)
             {
                 MessageBox.Show(
                     "Você precisa selecionar um registro para executar esta ação!",
@@ -59,11 +59,11 @@ namespace ControleDeBar.WinApp.ModuloGarcom
                 return;
             }
 
-            List<Garcom> garçomsCadastrados = repositorioGarcom.SelecionarTodos();
+            List<Garcom> garcomsCadastrados = repositorioGarcom.SelecionarTodos();
 
-            TelaGarcomForm telaDisciplina = new TelaGarcomForm(garçomsCadastrados);
+            TelaGarcomForm telaDisciplina = new TelaGarcomForm(garcomsCadastrados);
 
-            telaDisciplina.Garcom = garçomSelecionado;
+            telaDisciplina.Garcom = garcomSelecionado;
 
             DialogResult resultado = telaDisciplina.ShowDialog();
 
@@ -83,9 +83,9 @@ namespace ControleDeBar.WinApp.ModuloGarcom
         {
             int idSelecionado = tabelaGarcom.ObterRegistroSelecionado();
 
-            Garcom garçomSelecionado = repositorioGarcom.SelecionarPorId(idSelecionado);
+            Garcom garcomSelecionado = repositorioGarcom.SelecionarPorId(idSelecionado);
 
-            if (garçomSelecionado == null)
+            if (garcomSelecionado == null)
             {
                 MessageBox.Show(
                     "Você precisa selecionar um registro para executar esta ação!",
@@ -97,7 +97,7 @@ namespace ControleDeBar.WinApp.ModuloGarcom
             }
 
             DialogResult resposta = MessageBox.Show(
-                $"Você deseja realmente excluir o registro \"{garçomSelecionado.Nome}\" ",
+                $"Você deseja realmente excluir o registro \"{garcomSelecionado.Nome}\" ",
                 "Confirmar Exclusão",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
@@ -110,7 +110,7 @@ namespace ControleDeBar.WinApp.ModuloGarcom
 
             CarregarRegistros();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{garçomSelecionado.Nome}\" foi exluído com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{garcomSelecionado.Nome}\" foi exluído com sucesso!");
         }
 
         public override UserControl ObterListagem()
@@ -125,9 +125,9 @@ namespace ControleDeBar.WinApp.ModuloGarcom
 
         public override void CarregarRegistros()
         {
-            List<Garcom> garçoms = repositorioGarcom.SelecionarTodos();
+            List<Garcom> garcoms = repositorioGarcom.SelecionarTodos();
 
-            tabelaGarcom.AtualizarRegistros(garçoms);
+            tabelaGarcom.AtualizarRegistros(garcoms);
             AtualizarQuantidadeRodape();
         }
 

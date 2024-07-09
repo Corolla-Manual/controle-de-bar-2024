@@ -28,10 +28,10 @@ namespace ControleDeBar.Dominio.ModuloGarcom
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
-            Garcom garçom = (Garcom)novoRegistro;
+            Garcom garcom = (Garcom)novoRegistro;
 
-            Nome = garçom.Nome;
-            Cpf = garçom.Cpf;
+            Nome = garcom.Nome;
+            Cpf = garcom.Cpf;
         }
         public override string ToString()
         {

@@ -1,13 +1,4 @@
 ﻿using ControleDeBar.Dominio.ModuloGarcom;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ControleDeBar.WinApp.ModuloGarcom
 {
@@ -15,7 +6,7 @@ namespace ControleDeBar.WinApp.ModuloGarcom
     {
         public Garcom Garcom
         {
-            get => garçom;
+            get => garcom;
 
             set
             {
@@ -24,25 +15,25 @@ namespace ControleDeBar.WinApp.ModuloGarcom
             }
         }
 
-        private Garcom garçom;
+        private Garcom garcom;
 
-        private List<Garcom> garçomsCadastrados;
+        private List<Garcom> garcomsCadastrados;
 
-        public TelaGarcomForm(List<Garcom> garçomsCadastrados)
+        public TelaGarcomForm(List<Garcom> garcomsCadastrados)
         {
             InitializeComponent();
 
-            this.garçomsCadastrados = garçomsCadastrados;
+            this.garcomsCadastrados = garcomsCadastrados;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            garçom = new Garcom(txtNome.Text, txtCpf.Text);
+            garcom = new Garcom(txtNome.Text, txtCpf.Text);
 
-            List<string> erros = garçom.Validar();
+            List<string> erros = garcom.Validar();
 
             if (GarcomTemCpfDuplicado())
-                erros.Add("Já existe um garçom com este cpf cadastrado");
+                erros.Add("Já existe um garcom com este cpf cadastrado");
 
             if (erros.Count > 0)
             {
@@ -55,7 +46,7 @@ namespace ControleDeBar.WinApp.ModuloGarcom
 
         private bool GarcomTemCpfDuplicado()
         {
-            return garçomsCadastrados.Any(c => c.Cpf == garçom.Cpf);
+            return garcomsCadastrados.Any(c => c.Cpf == garcom.Cpf);
         }
     }
 }
