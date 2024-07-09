@@ -1,4 +1,5 @@
 ﻿using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.WinApp.Compartilhado;
 
 namespace ControleDeBar.WinApp.ModuloGarcom
 {
@@ -22,13 +23,13 @@ namespace ControleDeBar.WinApp.ModuloGarcom
         public TelaGarcomForm(List<Garcom> garcomsCadastrados)
         {
             InitializeComponent();
-
+            this.ConfigurarDialog();
             this.garcomsCadastrados = garcomsCadastrados;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            garcom = new Garcom(txtNome.Text, txtCpf.Text);
+            garcom = new Garcom(txtNome.Text.Trim(), txtCpf.Text.Trim());
 
             List<string> erros = garcom.Validar();
 

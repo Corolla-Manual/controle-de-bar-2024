@@ -23,6 +23,8 @@ namespace ControleDeBar.Dominio.ModuloGarcom
             if (string.IsNullOrEmpty(Cpf.Trim()))
                 erros.Add("O campo \"cpf\" é obrigatório");
 
+            if (Cpf.Trim().Length < 14)
+                erros.Add("O campo \"cpf\" não foi preenchido corretamente");
             return erros;
         }
 
