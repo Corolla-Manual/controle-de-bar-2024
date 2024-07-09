@@ -1,4 +1,4 @@
-﻿namespace ControleDeBar.WinApp.ModuloGarçom
+﻿namespace ControleDeBar.WinApp.ModuloGarcom
 {
     partial class TelaGarcomForm
     {
@@ -102,7 +102,7 @@
             Controls.Add(label1);
             Name = "TelaGarcomForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Cadastro de Garçom";
+            Text = "Cadastro de Garcom";
             ResumeLayout(false);
             PerformLayout();
         }

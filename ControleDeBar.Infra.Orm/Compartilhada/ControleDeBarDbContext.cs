@@ -9,7 +9,7 @@ namespace ControleDeBar.Infra.Orm.Compartilhada
     public class ControleDeBarDbContext : DbContext
     {
         public DbSet<Produto> Produtos { get; set; }
-        public DbSet<Garcom> Garçoms { get; set; }
+        public DbSet<Garcom> Garcoms { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<Mesa> Mesas { get; set; }
 
@@ -45,7 +45,7 @@ namespace ControleDeBar.Infra.Orm.Compartilhada
 
             modelBuilder.Entity<Garcom>(garçomBuilder =>
             {
-                garçomBuilder.ToTable("TBGarçom");
+                garçomBuilder.ToTable("TBGarcom");
 
                 garçomBuilder.Property(d => d.Id)
                     .IsRequired()

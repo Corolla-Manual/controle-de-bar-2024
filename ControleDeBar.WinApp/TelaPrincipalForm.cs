@@ -10,7 +10,7 @@ using ControleDeBar.Infra.Orm.ModuloMesa;
 using ControleDeBar.Infra.Orm.ModuloPedido;
 using ControleDeBar.Infra.Orm.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado;
-using ControleDeBar.WinApp.ModuloGarçom;
+using ControleDeBar.WinApp.ModuloGarcom;
 using ControleDeBar.WinApp.ModuloMesa;
 using ControleDeBar.WinApp.ModuloPedido;
 using ControleDeBar.WinApp.ModuloProduto;
@@ -22,7 +22,7 @@ namespace ControleDeBar.WinApp
         ControladorBase controlador;
         IRepositorioProduto repositorioProduto;
         IRepositorioMesa repositorioMesa;
-        IRepositorioGarcom repositorioGar輟m;
+        IRepositorioGarcom repositorioGarcom;
         IRepositorioPedido repositorioPedido;
 
         public static TelaPrincipalForm Instancia { get; private set; }
@@ -36,9 +36,9 @@ namespace ControleDeBar.WinApp
 
             repositorioProduto = new RepositorioProduto(dbContext);
 
-            repositorioGar輟m = new RepositorioGarcomEmOrm(dbContext);
+            repositorioGarcom = new RepositorioGarcomEmOrm(dbContext);
 
-            repositorioGar輟m = new RepositorioGarcomEmOrm(dbContext);
+            repositorioGarcom = new RepositorioGarcomEmOrm(dbContext);
 
             repositorioMesa = new RepositorioMesaEmOrm(dbContext);
             repositorioPedido = new RepositorioPedidoEmOrm(dbContext);
@@ -46,7 +46,7 @@ namespace ControleDeBar.WinApp
 
         private void garcomToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorGarcom(repositorioGar輟m);
+            controlador = new ControladorGarcom(repositorioGarcom);
 
             ConfigurarTelaPrincipal(controlador);
         }

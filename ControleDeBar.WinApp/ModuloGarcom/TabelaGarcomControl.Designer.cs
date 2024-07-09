@@ -1,4 +1,4 @@
-﻿namespace ControleDeBar.WinApp.ModuloGarçom
+﻿namespace ControleDeBar.WinApp.ModuloGarcom
 {
     partial class TabelaGarcomControl
     {
@@ -41,12 +41,12 @@
             grid.Size = new Size(150, 150);
             grid.TabIndex = 0;
             // 
-            // TabelaGarçomControl
+            // TabelaGarcomControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(grid);
-            Name = "TabelaGarçomControl";
+            Name = "TabelaGarcomControl";
             ((System.ComponentModel.ISupportInitialize)grid).EndInit();
             ResumeLayout(false);
         }

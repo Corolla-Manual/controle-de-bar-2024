@@ -1,7 +1,7 @@
 ﻿using ControleDeBar.Dominio.ModuloGarcom;
 using ControleDeBar.WinApp.Compartilhado;
 
-namespace ControleDeBar.WinApp.ModuloGarçom
+namespace ControleDeBar.WinApp.ModuloGarcom
 {
     public partial class TabelaGarcomControl : UserControl
     {

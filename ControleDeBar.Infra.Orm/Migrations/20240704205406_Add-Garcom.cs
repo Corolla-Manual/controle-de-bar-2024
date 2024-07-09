@@ -5,13 +5,13 @@
 namespace ControleDeBar.Infra.Orm.Migrations
 {
     /// <inheritdoc />
-    public partial class AddGarçom : Migration
+    public partial class AddGarcom : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "TBGarçom",
+                name: "TBGarcom",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -21,7 +21,7 @@ namespace ControleDeBar.Infra.Orm.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TBGarçom", x => x.Id);
+                    table.PrimaryKey("PK_TBGarcom", x => x.Id);
                 });
         }
 
@@ -29,7 +29,7 @@ namespace ControleDeBar.Infra.Orm.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TBGarçom");
+                name: "TBGarcom");
         }
     }
 }

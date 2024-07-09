@@ -9,11 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ControleDeBar.WinApp.ModuloGarçom
+namespace ControleDeBar.WinApp.ModuloGarcom
 {
     public partial class TelaGarcomForm : Form
     {
-        public Garcom Garçom
+        public Garcom Garcom
         {
             get => garçom;
 
@@ -41,7 +41,7 @@ namespace ControleDeBar.WinApp.ModuloGarçom
 
             List<string> erros = garçom.Validar();
 
-            if (GarçomTemCpfDuplicado())
+            if (GarcomTemCpfDuplicado())
                 erros.Add("Já existe um garçom com este cpf cadastrado");
 
             if (erros.Count > 0)
@@ -53,7 +53,7 @@ namespace ControleDeBar.WinApp.ModuloGarçom
 
         }
 
-        private bool GarçomTemCpfDuplicado()
+        private bool GarcomTemCpfDuplicado()
         {
             return garçomsCadastrados.Any(c => c.Cpf == garçom.Cpf);
         }

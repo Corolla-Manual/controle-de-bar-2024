@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleDeBar.Infra.Orm.Migrations
 {
     [DbContext(typeof(ControleDeBarDbContext))]
-    [Migration("20240704205406_Add-Garçom")]
-    partial class AddGarçom
+    [Migration("20240704205406_Add-Garcom")]
+    partial class AddGarcom
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,7 +42,7 @@ namespace ControleDeBar.Infra.Orm.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TBGarçom", (string)null);
+                    b.ToTable("TBGarcom", (string)null);
                 });
 #pragma warning restore 612, 618
         }

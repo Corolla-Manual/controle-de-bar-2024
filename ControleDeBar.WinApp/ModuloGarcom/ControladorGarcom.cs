@@ -1,46 +1,41 @@
 ﻿using ControleDeBar.Dominio.ModuloGarcom;
 using ControleDeBar.WinApp.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ControleDeBar.WinApp.ModuloGarçom
+namespace ControleDeBar.WinApp.ModuloGarcom
 {
     public class ControladorGarcom : ControladorBase
     {
-        public override string TipoCadastro => "Garçom";
+        public override string TipoCadastro => "Garcom";
 
-        public override string ToolTipAdicionar => "Cadastrar um novo Garçom";
+        public override string ToolTipAdicionar => "Cadastrar um novo Garcom";
 
-        public override string ToolTipEditar => "Editar um Garçom existente";
+        public override string ToolTipEditar => "Editar um Garcom existente";
 
-        public override string ToolTipExcluir => "Excluir um Garçom existente";
+        public override string ToolTipExcluir => "Excluir um Garcom existente";
 
-        TabelaGarcomControl tabelaGarçom;
+        TabelaGarcomControl tabelaGarcom;
 
-        IRepositorioGarcom repositorioGarçom;
+        IRepositorioGarcom repositorioGarcom;
 
-        public ControladorGarcom(IRepositorioGarcom repositorioGarçom)
+        public ControladorGarcom(IRepositorioGarcom repositorioGarcom)
         {
-            this.repositorioGarçom = repositorioGarçom;
+            this.repositorioGarcom = repositorioGarcom;
         }
 
         public override void Adicionar()
         {
-            List<Garcom> garçomsCadastrados = repositorioGarçom.SelecionarTodos();
+            List<Garcom> garçomsCadastrados = repositorioGarcom.SelecionarTodos();
 
-            TelaGarcomForm telaGarçom = new TelaGarcomForm(garçomsCadastrados);
+            TelaGarcomForm telaGarcom = new TelaGarcomForm(garçomsCadastrados);
 
-            DialogResult resultado = telaGarçom.ShowDialog();
+            DialogResult resultado = telaGarcom.ShowDialog();
 
             if (resultado != DialogResult.OK)
                 return;
 
-            Garcom novoRegistro = telaGarçom.Garçom;
+            Garcom novoRegistro = telaGarcom.Garcom;
 
-            repositorioGarçom.Cadastrar(novoRegistro);
+            repositorioGarcom.Cadastrar(novoRegistro);
 
             CarregarRegistros();
 
@@ -49,9 +44,9 @@ namespace ControleDeBar.WinApp.ModuloGarçom
 
         public override void Editar()
         {
-            int idSelecionado = tabelaGarçom.ObterRegistroSelecionado();
+            int idSelecionado = tabelaGarcom.ObterRegistroSelecionado();
 
-            Garcom garçomSelecionado = repositorioGarçom.SelecionarPorId(idSelecionado);
+            Garcom garçomSelecionado = repositorioGarcom.SelecionarPorId(idSelecionado);
 
             if (garçomSelecionado == null)
             {
@@ -64,20 +59,20 @@ namespace ControleDeBar.WinApp.ModuloGarçom
                 return;
             }
 
-            List<Garcom> garçomsCadastrados = repositorioGarçom.SelecionarTodos();
+            List<Garcom> garçomsCadastrados = repositorioGarcom.SelecionarTodos();
 
             TelaGarcomForm telaDisciplina = new TelaGarcomForm(garçomsCadastrados);
 
-            telaDisciplina.Garçom = garçomSelecionado;
+            telaDisciplina.Garcom = garçomSelecionado;
 
             DialogResult resultado = telaDisciplina.ShowDialog();
 
             if (resultado != DialogResult.OK)
                 return;
 
-            Garcom registroEditado = telaDisciplina.Garçom;
+            Garcom registroEditado = telaDisciplina.Garcom;
 
-            repositorioGarçom.Editar(idSelecionado, registroEditado);
+            repositorioGarcom.Editar(idSelecionado, registroEditado);
 
             CarregarRegistros();
 
@@ -86,9 +81,9 @@ namespace ControleDeBar.WinApp.ModuloGarçom
 
         public override void Excluir()
         {
-            int idSelecionado = tabelaGarçom.ObterRegistroSelecionado();
+            int idSelecionado = tabelaGarcom.ObterRegistroSelecionado();
 
-            Garcom garçomSelecionado = repositorioGarçom.SelecionarPorId(idSelecionado);
+            Garcom garçomSelecionado = repositorioGarcom.SelecionarPorId(idSelecionado);
 
             if (garçomSelecionado == null)
             {
@@ -111,7 +106,7 @@ namespace ControleDeBar.WinApp.ModuloGarçom
             if (resposta != DialogResult.Yes)
                 return;
 
-            repositorioGarçom.Excluir(idSelecionado);
+            repositorioGarcom.Excluir(idSelecionado);
 
             CarregarRegistros();
 
@@ -120,19 +115,19 @@ namespace ControleDeBar.WinApp.ModuloGarçom
 
         public override UserControl ObterListagem()
         {
-            if (tabelaGarçom == null)
-                tabelaGarçom = new TabelaGarcomControl();
+            if (tabelaGarcom == null)
+                tabelaGarcom = new TabelaGarcomControl();
 
             CarregarRegistros();
 
-            return tabelaGarçom;
+            return tabelaGarcom;
         }
 
         public override void CarregarRegistros()
         {
-            List<Garcom> garçoms = repositorioGarçom.SelecionarTodos();
+            List<Garcom> garçoms = repositorioGarcom.SelecionarTodos();
 
-            tabelaGarçom.AtualizarRegistros(garçoms);
+            tabelaGarcom.AtualizarRegistros(garçoms);
         }
     }
 }

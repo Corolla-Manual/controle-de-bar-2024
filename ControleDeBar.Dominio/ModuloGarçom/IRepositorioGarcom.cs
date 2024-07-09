@@ -8,7 +8,7 @@ namespace ControleDeBar.Dominio.ModuloGarcom
 {
     public interface IRepositorioGarcom
     {
-        void Cadastrar(Garcom novoGarçom);
+        void Cadastrar(Garcom novoGarcom);
         bool Editar(int id, Garcom garçomEditado);
         bool Excluir(int id);
         Garcom SelecionarPorId(int idSelecionado);

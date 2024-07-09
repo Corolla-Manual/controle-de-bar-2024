@@ -12,15 +12,15 @@ namespace ControleDeBar.Infra.Orm.ModuloGarcom
             this.dbContext = dbContext;
         }
 
-        public void Cadastrar(Garcom novoGarçom)
+        public void Cadastrar(Garcom novoGarcom)
         {
-            dbContext.Garçoms.Add(novoGarçom);
+            dbContext.Garcoms.Add(novoGarcom);
             dbContext.SaveChanges();
         }
 
         public bool Editar(int id, Garcom garçomEditado)
         {
-            Garcom garçom = dbContext.Garçoms.Find(id)!;
+            Garcom garçom = dbContext.Garcoms.Find(id)!;
 
             if (garçom == null)
                 return false;
@@ -33,12 +33,12 @@ namespace ControleDeBar.Infra.Orm.ModuloGarcom
 
         public bool Excluir(int id)
         {
-            Garcom garçom = dbContext.Garçoms.Find(id)!;
+            Garcom garçom = dbContext.Garcoms.Find(id)!;
 
             if (garçom == null)
                 return false;
 
-            dbContext.Garçoms.Remove(garçom);
+            dbContext.Garcoms.Remove(garçom);
             dbContext.SaveChanges();
 
             return true;
@@ -46,12 +46,12 @@ namespace ControleDeBar.Infra.Orm.ModuloGarcom
 
         public Garcom SelecionarPorId(int idSelecionado)
         {
-            return dbContext.Garçoms.Find(idSelecionado)!;
+            return dbContext.Garcoms.Find(idSelecionado)!;
         }
 
         public List<Garcom> SelecionarTodos()
         {
-            return dbContext.Garçoms.ToList();
+            return dbContext.Garcoms.ToList();
         }
     }
 }
