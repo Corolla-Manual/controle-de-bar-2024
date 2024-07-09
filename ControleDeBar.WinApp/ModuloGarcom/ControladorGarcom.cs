@@ -61,16 +61,16 @@ namespace ControleDeBar.WinApp.ModuloGarcom
 
             List<Garcom> garcomsCadastrados = repositorioGarcom.SelecionarTodos();
 
-            TelaGarcomForm telaDisciplina = new TelaGarcomForm(garcomsCadastrados);
+            TelaGarcomForm telaGarcom = new TelaGarcomForm(garcomsCadastrados);
 
-            telaDisciplina.Garcom = garcomSelecionado;
+            telaGarcom.Garcom = garcomSelecionado;
 
-            DialogResult resultado = telaDisciplina.ShowDialog();
+            DialogResult resultado = telaGarcom.ShowDialog();
 
             if (resultado != DialogResult.OK)
                 return;
 
-            Garcom registroEditado = telaDisciplina.Garcom;
+            Garcom registroEditado = telaGarcom.Garcom;
 
             repositorioGarcom.Editar(idSelecionado, registroEditado);
 
