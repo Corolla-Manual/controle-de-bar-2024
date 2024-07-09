@@ -16,7 +16,6 @@ namespace ControleDeBar.Infra.Orm.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NumeroPedido = table.Column<int>(type: "int", nullable: false),
                     Produto_Id = table.Column<int>(type: "int", nullable: false),
                     Quantidade = table.Column<int>(type: "int", nullable: false)
                 },
@@ -41,6 +40,9 @@ namespace ControleDeBar.Infra.Orm.Migrations
         {
             migrationBuilder.DropTable(
                 name: "TBGarcom");
+
+            migrationBuilder.DropTable(
+                name: "TBMesa");
 
             migrationBuilder.DropTable(
                 name: "TBPedido");

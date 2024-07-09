@@ -5,7 +5,6 @@ namespace ControleDeBar.Dominio.ModuloPedido
 {
     public class Pedido : EntidadeBase
     {
-        public int NumeroPedido { get; set; }
         public Produto Produto { get; set; }
         public int Quantidade { get; set; }
 
@@ -13,9 +12,8 @@ namespace ControleDeBar.Dominio.ModuloPedido
         {
 
         }
-        public Pedido(int numeroPedido, Produto produto, int quantidade)
+        public Pedido(Produto produto, int quantidade)
         {
-            NumeroPedido = numeroPedido;
             Produto = produto;
             Quantidade = quantidade;
         }
@@ -34,7 +32,6 @@ namespace ControleDeBar.Dominio.ModuloPedido
         {
             Pedido pedido = (Pedido)novoRegistro;
 
-            NumeroPedido = pedido.NumeroPedido;
             Produto = pedido.Produto;
             Quantidade = pedido.Quantidade;
         }
@@ -45,7 +42,7 @@ namespace ControleDeBar.Dominio.ModuloPedido
         }
         public override string ToString()
         {
-            return $"Pedido Nº {NumeroPedido}";
+            return $"Produto: {Produto} | Quantidade: {Quantidade}";
         }
     }
 }

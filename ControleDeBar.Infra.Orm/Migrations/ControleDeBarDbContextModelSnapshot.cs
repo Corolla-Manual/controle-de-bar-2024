@@ -3,7 +3,6 @@ using ControleDeBar.Infra.Orm.Compartilhada;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,11 +10,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleDeBar.Infra.Orm.Migrations
 {
     [DbContext(typeof(ControleDeBarDbContext))]
-    [Migration("20240708193821_Add-Pedido")]
-    partial class AddPedido
+    partial class ControleDeBarDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,7 +42,7 @@ namespace ControleDeBar.Infra.Orm.Migrations
                     b.ToTable("TBGarcom", (string)null);
                 });
 
-            modelBuilder.Entity("ControleDeBar.Dominio.ModuloPedido.Pedido", b =>
+            modelBuilder.Entity("ControleDeBar.Dominio.ModuloMesa.Mesa", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,8 +50,26 @@ namespace ControleDeBar.Infra.Orm.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("NumeroPedido")
+                    b.Property<string>("NumeroMesa")
+                        .IsRequired()
+                        .HasColumnType("varchar(5)");
+
+                    b.Property<string>("Ocupada")
+                        .IsRequired()
+                        .HasColumnType("varchar(5)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TBMesa", (string)null);
+                });
+
+            modelBuilder.Entity("ControleDeBar.Dominio.ModuloPedido.Pedido", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Produto_Id")
                         .HasColumnType("int");
