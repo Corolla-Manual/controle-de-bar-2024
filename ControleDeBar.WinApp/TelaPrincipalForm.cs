@@ -12,7 +12,6 @@ using ControleDeBar.Infra.Orm.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado;
 using ControleDeBar.WinApp.ModuloGarcom;
 using ControleDeBar.WinApp.ModuloMesa;
-using ControleDeBar.WinApp.ModuloPedido;
 using ControleDeBar.WinApp.ModuloProduto;
 
 namespace ControleDeBar.WinApp
@@ -60,13 +59,6 @@ namespace ControleDeBar.WinApp
         private void mesaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controlador = new ControladorMesa(repositorioMesa);
-            ConfigurarTelaPrincipal(controlador);
-        }
-
-
-        private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            controlador = new ControladorPedido(repositorioPedido, repositorioProduto);
             ConfigurarTelaPrincipal(controlador);
         }
         public void AtualizarRodape(string texto)
