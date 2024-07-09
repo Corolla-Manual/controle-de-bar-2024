@@ -34,7 +34,7 @@ namespace ControleDeBar.WinApp
 
             ControleDeBarDbContext dbContext = new ControleDeBarDbContext();
 
-            repositorioProduto = new RepositorioProduto(dbContext);
+            repositorioProduto = new RepositorioProdutoEmOrm(dbContext);
 
             repositorioGarcom = new RepositorioGarcomEmOrm(dbContext);
 

@@ -3,11 +3,11 @@ using ControleDeBar.Infra.Orm.Compartilhada;
 
 namespace ControleDeBar.Infra.Orm.ModuloProduto
 {
-    public class RepositorioProduto : IRepositorioProduto
+    public class RepositorioProdutoEmOrm : IRepositorioProduto
     {
         ControleDeBarDbContext dbContext;
 
-        public RepositorioProduto(ControleDeBarDbContext dbContext)
+        public RepositorioProdutoEmOrm(ControleDeBarDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
