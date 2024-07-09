@@ -26,7 +26,7 @@ namespace ControleDeBar.WinApp.ModuloProduto
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string nome = txtNome.Text;
+            string nome = txtNome.Text.Trim();
             double preco = (double)numPreco.Value;
 
             produto = new Produto(nome, preco);
