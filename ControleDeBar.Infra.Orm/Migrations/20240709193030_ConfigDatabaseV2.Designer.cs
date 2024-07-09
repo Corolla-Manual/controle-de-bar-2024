@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleDeBar.Infra.Orm.Migrations
 {
     [DbContext(typeof(ControleDeBarDbContext))]
-    [Migration("20240709191501_configDataBase")]
-    partial class configDataBase
+    [Migration("20240709193030_ConfigDatabaseV2")]
+    partial class ConfigDatabaseV2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -105,9 +105,6 @@ namespace ControleDeBar.Infra.Orm.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("Conta_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumeroPedido")
                         .HasColumnType("int");
 
                     b.Property<int>("Produto_Id")

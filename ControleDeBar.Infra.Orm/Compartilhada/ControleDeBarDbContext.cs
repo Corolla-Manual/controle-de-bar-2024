@@ -1,8 +1,8 @@
-﻿using ControleDeBar.Dominio.ModuloGarcom;
+﻿using ControleDeBar.Dominio.ModuloConta;
+using ControleDeBar.Dominio.ModuloGarcom;
+using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Dominio.ModuloPedido;
 using ControleDeBar.Dominio.ModuloProduto;
-using ControleDeBar.Dominio.ModuloMesa;
-using ControleDeBar.Dominio.ModuloConta;
 using Microsoft.EntityFrameworkCore;
 
 namespace ControleDeBar.Infra.Orm.Compartilhada
@@ -69,10 +69,6 @@ namespace ControleDeBar.Infra.Orm.Compartilhada
                 pedidoBuilder.Property(p => p.Id)
                 .IsRequired()
                 .ValueGeneratedOnAdd();
-
-                pedidoBuilder.Property(p => p.NumeroPedido)
-                .IsRequired()
-                .HasColumnType("int");
 
                 pedidoBuilder.Property(p => p.Quantidade)
                 .IsRequired()

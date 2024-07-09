@@ -69,7 +69,7 @@ namespace ControleDeBar.Infra.Orm.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TBGarçom", (string)null);
+                    b.ToTable("TBGarcom", (string)null);
                 });
 
             modelBuilder.Entity("ControleDeBar.Dominio.ModuloMesa.Mesa", b =>
@@ -102,9 +102,6 @@ namespace ControleDeBar.Infra.Orm.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("Conta_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumeroPedido")
                         .HasColumnType("int");
 
                     b.Property<int>("Produto_Id")

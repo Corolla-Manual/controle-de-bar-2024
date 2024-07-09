@@ -63,6 +63,36 @@ namespace ControleDeBar.WinApp.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btn_Faturamento {
+            get {
+                object obj = ResourceManager.GetObject("btn_Faturamento", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btn_FecharConta {
+            get {
+                object obj = ResourceManager.GetObject("btn_FecharConta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btn_RegistrarPedido {
+            get {
+                object obj = ResourceManager.GetObject("btn_RegistrarPedido", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnAdicionar {
             get {
                 object obj = ResourceManager.GetObject("btnAdicionar", resourceCulture);

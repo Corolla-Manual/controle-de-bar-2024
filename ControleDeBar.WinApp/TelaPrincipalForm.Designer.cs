@@ -33,8 +33,7 @@
             garcomToolStripMenuItem = new ToolStripMenuItem();
             produtoToolStripMenuItem = new ToolStripMenuItem();
             mesaToolStripMenuItem = new ToolStripMenuItem();
-            pedidoToolStripMenuItem = new ToolStripMenuItem();
-            mesaToolStripMenuItem = new ToolStripMenuItem();
+            contaToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
@@ -42,11 +41,13 @@
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
-            btnVisualizar = new ToolStripButton();
+            btn_ContasEmAberto = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
             lblTipoCadastro = new ToolStripLabel();
             pnlRegistros = new Panel();
-            contaToolStripMenuItem = new ToolStripMenuItem();
+            btn_AdicionarPedido = new ToolStripButton();
+            btn_FecharConta = new ToolStripButton();
+            btn_Faturamento = new ToolStripButton();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -64,8 +65,7 @@
             // 
             // cadastrosToolStripMenuItem
             // 
-            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { garcomToolStripMenuItem, produtoToolStripMenuItem, mesaToolStripMenuItem });
-            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pedidoToolStripMenuItem, garcomToolStripMenuItem, produtoToolStripMenuItem, mesaToolStripMenuItem, contaToolStripMenuItem });
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { garcomToolStripMenuItem, produtoToolStripMenuItem, mesaToolStripMenuItem, contaToolStripMenuItem });
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             cadastrosToolStripMenuItem.Size = new Size(86, 24);
             cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -73,30 +73,30 @@
             // garcomToolStripMenuItem
             // 
             garcomToolStripMenuItem.Name = "garcomToolStripMenuItem";
-            garcomToolStripMenuItem.Size = new Size(180, 24);
+            garcomToolStripMenuItem.Size = new Size(131, 24);
             garcomToolStripMenuItem.Text = "Garcom";
             garcomToolStripMenuItem.Click += garcomToolStripMenuItem_Click;
             // 
             // produtoToolStripMenuItem
             // 
             produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            produtoToolStripMenuItem.Size = new Size(180, 24);
+            produtoToolStripMenuItem.Size = new Size(131, 24);
             produtoToolStripMenuItem.Text = "Produto";
             produtoToolStripMenuItem.Click += produtoToolStripMenuItem_Click;
             // 
             // mesaToolStripMenuItem
             // 
             mesaToolStripMenuItem.Name = "mesaToolStripMenuItem";
-            mesaToolStripMenuItem.Size = new Size(180, 24);
+            mesaToolStripMenuItem.Size = new Size(131, 24);
             mesaToolStripMenuItem.Text = "Mesa";
             mesaToolStripMenuItem.Click += mesaToolStripMenuItem_Click;
             // 
-            // mesaToolStripMenuItem
+            // contaToolStripMenuItem
             // 
-            mesaToolStripMenuItem.Name = "mesaToolStripMenuItem";
-            mesaToolStripMenuItem.Size = new Size(180, 24);
-            mesaToolStripMenuItem.Text = "Mesa";
-            mesaToolStripMenuItem.Click += mesaToolStripMenuItem_Click;
+            contaToolStripMenuItem.Name = "contaToolStripMenuItem";
+            contaToolStripMenuItem.Size = new Size(131, 24);
+            contaToolStripMenuItem.Text = "Conta";
+            contaToolStripMenuItem.Click += contaToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -116,7 +116,7 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnVisualizar, toolStripSeparator3, lblTipoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btn_AdicionarPedido, btn_FecharConta, btn_ContasEmAberto, btn_Faturamento, toolStripSeparator3, lblTipoCadastro });
             toolStrip1.Location = new Point(0, 28);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(800, 41);
@@ -164,17 +164,17 @@
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(6, 41);
             // 
-            // btnVisualizar
+            // btn_ContasEmAberto
             // 
-            btnVisualizar.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnVisualizar.Enabled = false;
-            btnVisualizar.Image = Properties.Resources.btnVisualizar;
-            btnVisualizar.ImageScaling = ToolStripItemImageScaling.None;
-            btnVisualizar.ImageTransparentColor = Color.Magenta;
-            btnVisualizar.Name = "btnVisualizar";
-            btnVisualizar.Padding = new Padding(5);
-            btnVisualizar.Size = new Size(38, 38);
-            btnVisualizar.Click += btnVisualizar_Click;
+            btn_ContasEmAberto.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btn_ContasEmAberto.Enabled = false;
+            btn_ContasEmAberto.Image = Properties.Resources.btnVisualizar;
+            btn_ContasEmAberto.ImageScaling = ToolStripItemImageScaling.None;
+            btn_ContasEmAberto.ImageTransparentColor = Color.Magenta;
+            btn_ContasEmAberto.Name = "btn_ContasEmAberto";
+            btn_ContasEmAberto.Padding = new Padding(5);
+            btn_ContasEmAberto.Size = new Size(38, 38);
+            btn_ContasEmAberto.Click += btnVisualizar_Click;
             // 
             // toolStripSeparator3
             // 
@@ -196,12 +196,41 @@
             pnlRegistros.Size = new Size(800, 356);
             pnlRegistros.TabIndex = 3;
             // 
-            // contaToolStripMenuItem
+            // btn_AdicionarPedido
             // 
-            contaToolStripMenuItem.Name = "contaToolStripMenuItem";
-            contaToolStripMenuItem.Size = new Size(180, 24);
-            contaToolStripMenuItem.Text = "Conta";
-            contaToolStripMenuItem.Click += contaToolStripMenuItem_Click;
+            btn_AdicionarPedido.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btn_AdicionarPedido.Enabled = false;
+            btn_AdicionarPedido.Image = Properties.Resources.btn_RegistrarPedido;
+            btn_AdicionarPedido.ImageScaling = ToolStripItemImageScaling.None;
+            btn_AdicionarPedido.ImageTransparentColor = Color.Magenta;
+            btn_AdicionarPedido.Name = "btn_AdicionarPedido";
+            btn_AdicionarPedido.Padding = new Padding(5);
+            btn_AdicionarPedido.Size = new Size(38, 38);
+            btn_AdicionarPedido.Text = "toolStripButton1";
+            // 
+            // btn_FecharConta
+            // 
+            btn_FecharConta.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btn_FecharConta.Enabled = false;
+            btn_FecharConta.Image = Properties.Resources.btn_FecharConta;
+            btn_FecharConta.ImageScaling = ToolStripItemImageScaling.None;
+            btn_FecharConta.ImageTransparentColor = Color.Magenta;
+            btn_FecharConta.Name = "btn_FecharConta";
+            btn_FecharConta.Padding = new Padding(5);
+            btn_FecharConta.Size = new Size(38, 38);
+            btn_FecharConta.Text = "toolStripButton1";
+            // 
+            // btn_Faturamento
+            // 
+            btn_Faturamento.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btn_Faturamento.Enabled = false;
+            btn_Faturamento.Image = Properties.Resources.btn_Faturamento;
+            btn_Faturamento.ImageScaling = ToolStripItemImageScaling.None;
+            btn_Faturamento.ImageTransparentColor = Color.Magenta;
+            btn_Faturamento.Name = "btn_Faturamento";
+            btn_Faturamento.Padding = new Padding(5);
+            btn_Faturamento.Size = new Size(38, 38);
+            btn_Faturamento.Text = "toolStripButton1";
             // 
             // TelaPrincipalForm
             // 
@@ -243,10 +272,13 @@
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripLabel lblTipoCadastro;
         private ToolStripSeparator toolStripSeparator3;
-        private ToolStripButton btnVisualizar;
+        private ToolStripButton btn_ContasEmAberto;
         private ToolStripMenuItem garcomToolStripMenuItem;
         private ToolStripMenuItem produtoToolStripMenuItem;
         private ToolStripMenuItem mesaToolStripMenuItem;
         private ToolStripMenuItem contaToolStripMenuItem;
+        private ToolStripButton btn_FecharConta;
+        private ToolStripButton btn_AdicionarPedido;
+        private ToolStripButton btn_Faturamento;
     }
 }

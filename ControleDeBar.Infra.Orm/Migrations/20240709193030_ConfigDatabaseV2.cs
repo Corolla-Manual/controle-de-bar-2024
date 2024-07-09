@@ -5,13 +5,13 @@
 namespace ControleDeBar.Infra.Orm.Migrations
 {
     /// <inheritdoc />
-    public partial class configDataBase : Migration
+    public partial class ConfigDatabaseV2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "TBGarçom",
+                name: "TBGarcom",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -21,7 +21,7 @@ namespace ControleDeBar.Infra.Orm.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TBGarçom", x => x.Id);
+                    table.PrimaryKey("PK_TBGarcom", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -69,7 +69,7 @@ namespace ControleDeBar.Infra.Orm.Migrations
                     table.ForeignKey(
                         name: "FK_TBConta_TBGarcom",
                         column: x => x.Garcom_Id,
-                        principalTable: "TBGarçom",
+                        principalTable: "TBGarcom",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_TBConta_TBMesa",
@@ -84,7 +84,6 @@ namespace ControleDeBar.Infra.Orm.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NumeroPedido = table.Column<int>(type: "int", nullable: false),
                     Produto_Id = table.Column<int>(type: "int", nullable: false),
                     Quantidade = table.Column<int>(type: "int", nullable: false),
                     Conta_Id = table.Column<int>(type: "int", nullable: true)
@@ -139,7 +138,7 @@ namespace ControleDeBar.Infra.Orm.Migrations
                 name: "TBProduto");
 
             migrationBuilder.DropTable(
-                name: "TBGarçom");
+                name: "TBGarcom");
 
             migrationBuilder.DropTable(
                 name: "TBMesa");

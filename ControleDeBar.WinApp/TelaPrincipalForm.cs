@@ -34,15 +34,10 @@ namespace ControleDeBar.WinApp
             Instancia = this;
 
             ControleDeBarDbContext dbContext = new ControleDeBarDbContext();
-
             repositorioProduto = new RepositorioProdutoEmOrm(dbContext);
-
-
             repositorioGarcom = new RepositorioGarcomEmOrm(dbContext);
-
             repositorioMesa = new RepositorioMesaEmOrm(dbContext);
             repositorioPedido = new RepositorioPedidoEmOrm(dbContext);
-
             repositorioConta = new RepositorioContaEmOrm(dbContext);
         }
 
@@ -64,6 +59,11 @@ namespace ControleDeBar.WinApp
             controlador = new ControladorMesa(repositorioMesa);
             ConfigurarTelaPrincipal(controlador);
         }
+        private void contaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorConta(repositorioConta);
+            ConfigurarTelaPrincipal(controlador);
+        }
         public void AtualizarRodape(string texto)
         {
             statusLabelPrincipal.Text = texto;
@@ -83,7 +83,7 @@ namespace ControleDeBar.WinApp
             btnEditar.Enabled = controladorSelecionado is ControladorBase;
             btnExcluir.Enabled = controladorSelecionado is ControladorBase;
 
-            btnVisualizar.Enabled = controladorSelecionado is IControladorVisualizavel;
+            btn_ContasEmAberto.Enabled = controladorSelecionado is IControladorVisualizavel;
 
             ConfigurarToolTips(controladorSelecionado);
         }
@@ -95,7 +95,7 @@ namespace ControleDeBar.WinApp
             btnExcluir.ToolTipText = controladorSelecionado.ToolTipExcluir;
 
             if (controladorSelecionado is IControladorVisualizavel controladorVisualizavel)
-                btnVisualizar.ToolTipText = controladorVisualizavel.ToolTipVisualizar;
+                btn_ContasEmAberto.ToolTipText = controladorVisualizavel.ToolTipVisualizar;
 
         }
 
@@ -132,5 +132,7 @@ namespace ControleDeBar.WinApp
         {
             Application.Exit();
         }
+
+
     }
 }
