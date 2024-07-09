@@ -1,4 +1,4 @@
-﻿namespace ControleDeBar.WinApp.ModuloGarçom
+﻿namespace ControleDeBar.WinApp.ModuloGarcom
 {
     partial class TelaGarcomForm
     {
@@ -32,8 +32,8 @@
             label2 = new Label();
             button1 = new Button();
             btnGravar = new Button();
-            txtCpf = new TextBox();
             txtNome = new TextBox();
+            txtCpf = new MaskedTextBox();
             SuspendLayout();
             // 
             // label1
@@ -75,13 +75,6 @@
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;
             // 
-            // txtCpf
-            // 
-            txtCpf.Location = new Point(105, 91);
-            txtCpf.Name = "txtCpf";
-            txtCpf.Size = new Size(100, 23);
-            txtCpf.TabIndex = 2;
-            // 
             // txtNome
             // 
             txtNome.Location = new Point(105, 59);
@@ -89,20 +82,28 @@
             txtNome.Size = new Size(100, 23);
             txtNome.TabIndex = 2;
             // 
+            // txtCpf
+            // 
+            txtCpf.Location = new Point(105, 92);
+            txtCpf.Mask = "000,000,000-00";
+            txtCpf.Name = "txtCpf";
+            txtCpf.Size = new Size(100, 23);
+            txtCpf.TabIndex = 3;
+            // 
             // TelaGarcomForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(303, 206);
-            Controls.Add(txtNome);
             Controls.Add(txtCpf);
+            Controls.Add(txtNome);
             Controls.Add(btnGravar);
             Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "TelaGarcomForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Cadastro de Garçom";
+            Text = "Cadastro de Garcom";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -113,7 +114,7 @@
         private Label label2;
         private Button button1;
         private Button btnGravar;
-        private TextBox txtCpf;
         private TextBox txtNome;
+        private MaskedTextBox txtCpf;
     }
 }

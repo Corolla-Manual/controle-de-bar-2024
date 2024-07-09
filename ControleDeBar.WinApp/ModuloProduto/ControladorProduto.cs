@@ -127,6 +127,12 @@ namespace ControleDeBar.WinApp.ModuloProduto
             List<Produto> produtos = repositorioProduto.SelecionarTodos();
 
             tabelaProduto.AtualizarRegistros(produtos);
+            AtualizarQuantidadeRodape();
+        }
+
+        private void AtualizarQuantidadeRodape()
+        {
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {repositorioProduto.SelecionarTodos().Count} registro(s)...");
         }
     }
 }

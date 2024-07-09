@@ -12,20 +12,20 @@ namespace ControleDeBar.Infra.Orm.ModuloGarcom
             this.dbContext = dbContext;
         }
 
-        public void Cadastrar(Garcom novoGarçom)
+        public void Cadastrar(Garcom novoGarcom)
         {
-            dbContext.Garçoms.Add(novoGarçom);
+            dbContext.Garcoms.Add(novoGarcom);
             dbContext.SaveChanges();
         }
 
-        public bool Editar(int id, Garcom garçomEditado)
+        public bool Editar(int id, Garcom garcomEditado)
         {
-            Garcom garçom = dbContext.Garçoms.Find(id)!;
+            Garcom garcom = dbContext.Garcoms.Find(id)!;
 
-            if (garçom == null)
+            if (garcom == null)
                 return false;
 
-            garçom.AtualizarRegistro(garçomEditado);
+            garcom.AtualizarRegistro(garcomEditado);
             dbContext.SaveChanges();
 
             return true;
@@ -33,12 +33,12 @@ namespace ControleDeBar.Infra.Orm.ModuloGarcom
 
         public bool Excluir(int id)
         {
-            Garcom garçom = dbContext.Garçoms.Find(id)!;
+            Garcom garcom = dbContext.Garcoms.Find(id)!;
 
-            if (garçom == null)
+            if (garcom == null)
                 return false;
 
-            dbContext.Garçoms.Remove(garçom);
+            dbContext.Garcoms.Remove(garcom);
             dbContext.SaveChanges();
 
             return true;
@@ -46,12 +46,12 @@ namespace ControleDeBar.Infra.Orm.ModuloGarcom
 
         public Garcom SelecionarPorId(int idSelecionado)
         {
-            return dbContext.Garçoms.Find(idSelecionado)!;
+            return dbContext.Garcoms.Find(idSelecionado)!;
         }
 
         public List<Garcom> SelecionarTodos()
         {
-            return dbContext.Garçoms.ToList();
+            return dbContext.Garcoms.ToList();
         }
     }
 }

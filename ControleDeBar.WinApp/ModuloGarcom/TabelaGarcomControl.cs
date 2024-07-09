@@ -1,7 +1,7 @@
 ﻿using ControleDeBar.Dominio.ModuloGarcom;
 using ControleDeBar.WinApp.Compartilhado;
 
-namespace ControleDeBar.WinApp.ModuloGarçom
+namespace ControleDeBar.WinApp.ModuloGarcom
 {
     public partial class TabelaGarcomControl : UserControl
     {
@@ -15,11 +15,11 @@ namespace ControleDeBar.WinApp.ModuloGarçom
             grid.ConfigurarGridZebrado();
         }
         
-        public void AtualizarRegistros(List<Garcom> garçoms)
+        public void AtualizarRegistros(List<Garcom> garcoms)
         {
             grid.Rows.Clear();
 
-            foreach (Garcom g in garçoms)
+            foreach (Garcom g in garcoms)
                 grid.Rows.Add(g.Id, g.Nome, g.Cpf);
         }
 

@@ -1,7 +1,5 @@
-﻿using ControleDeBar.Dominio.ModuloGarcom;
-using ControleDeBar.Dominio.ModuloMesa;
+﻿using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.WinApp.Compartilhado;
-using System.Diagnostics.Tracing;
 
 namespace ControleDeBar.WinApp.ModuloMesa
 {
@@ -131,6 +129,12 @@ namespace ControleDeBar.WinApp.ModuloMesa
             List<Mesa> mesas = repositorioMesa.SelecionarTodos();
 
             tabelaMesa.AtualizarRegistros(mesas);
+            AtualizarQuantidadeRodape();
+        }
+
+        private void AtualizarQuantidadeRodape()
+        {
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {repositorioMesa.SelecionarTodos().Count} registro(s)...");
         }
     }
 }

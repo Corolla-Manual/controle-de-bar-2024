@@ -72,7 +72,7 @@ namespace ControleDeBar.Infra.Orm.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TBGarçom", (string)null);
+                    b.ToTable("TBGarcom", (string)null);
                 });
 
             modelBuilder.Entity("ControleDeBar.Dominio.ModuloMesa.Mesa", b =>

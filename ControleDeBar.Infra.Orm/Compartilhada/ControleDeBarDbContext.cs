@@ -10,7 +10,7 @@ namespace ControleDeBar.Infra.Orm.Compartilhada
     public class ControleDeBarDbContext : DbContext
     {
         public DbSet<Produto> Produtos { get; set; }
-        public DbSet<Garcom> Garçoms { get; set; }
+        public DbSet<Garcom> Garcoms { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<Mesa> Mesas { get; set; }
         public DbSet<Conta> Contas { get; set; }
@@ -45,19 +45,19 @@ namespace ControleDeBar.Infra.Orm.Compartilhada
                 .HasColumnType("real");
             });
 
-            modelBuilder.Entity<Garcom>(garçomBuilder =>
+            modelBuilder.Entity<Garcom>(garcomBuilder =>
             {
-                garçomBuilder.ToTable("TBGarçom");
+                garcomBuilder.ToTable("TBGarcom");
 
-                garçomBuilder.Property(d => d.Id)
+                garcomBuilder.Property(d => d.Id)
                     .IsRequired()
                     .ValueGeneratedOnAdd();
 
-                garçomBuilder.Property(d => d.Nome)
+                garcomBuilder.Property(d => d.Nome)
                     .IsRequired()
                     .HasColumnType("varchar(250)");
 
-                garçomBuilder.Property(d => d.Cpf)
+                garcomBuilder.Property(d => d.Cpf)
                     .IsRequired()
                     .HasColumnType("varchar(14)");
             });

@@ -1,9 +1,4 @@
 ﻿using ControleDeBar.Dominio.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleDeBar.Dominio.ModuloGarcom
 {
@@ -28,15 +23,21 @@ namespace ControleDeBar.Dominio.ModuloGarcom
             if (string.IsNullOrEmpty(Cpf.Trim()))
                 erros.Add("O campo \"cpf\" é obrigatório");
 
+            if (Cpf.Trim().Length < 14)
+                erros.Add("O campo \"cpf\" não foi preenchido corretamente");
             return erros;
         }
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
-            Garcom garçom = (Garcom)novoRegistro;
+            Garcom garcom = (Garcom)novoRegistro;
 
-            Nome = garçom.Nome;
-            Cpf = garçom.Cpf;
+            Nome = garcom.Nome;
+            Cpf = garcom.Cpf;
+        }
+        public override string ToString()
+        {
+            return $"{Nome}";
         }
     }
 }

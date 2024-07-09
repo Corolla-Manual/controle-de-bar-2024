@@ -32,6 +32,7 @@
             cadastrosToolStripMenuItem = new ToolStripMenuItem();
             garcomToolStripMenuItem = new ToolStripMenuItem();
             produtoToolStripMenuItem = new ToolStripMenuItem();
+            mesaToolStripMenuItem = new ToolStripMenuItem();
             pedidoToolStripMenuItem = new ToolStripMenuItem();
             mesaToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
@@ -63,6 +64,7 @@
             // 
             // cadastrosToolStripMenuItem
             // 
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { garcomToolStripMenuItem, produtoToolStripMenuItem, mesaToolStripMenuItem });
             cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pedidoToolStripMenuItem, garcomToolStripMenuItem, produtoToolStripMenuItem, mesaToolStripMenuItem, contaToolStripMenuItem });
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             cadastrosToolStripMenuItem.Size = new Size(86, 24);
@@ -82,12 +84,12 @@
             produtoToolStripMenuItem.Text = "Produto";
             produtoToolStripMenuItem.Click += produtoToolStripMenuItem_Click;
             // 
-            // pedidoToolStripMenuItem
+            // mesaToolStripMenuItem
             // 
-            pedidoToolStripMenuItem.Name = "pedidoToolStripMenuItem";
-            pedidoToolStripMenuItem.Size = new Size(180, 24);
-            pedidoToolStripMenuItem.Text = "Pedido";
-            pedidoToolStripMenuItem.Click += pedidoToolStripMenuItem_Click;
+            mesaToolStripMenuItem.Name = "mesaToolStripMenuItem";
+            mesaToolStripMenuItem.Size = new Size(180, 24);
+            mesaToolStripMenuItem.Text = "Mesa";
+            mesaToolStripMenuItem.Click += mesaToolStripMenuItem_Click;
             // 
             // mesaToolStripMenuItem
             // 
@@ -244,7 +246,6 @@
         private ToolStripButton btnVisualizar;
         private ToolStripMenuItem garcomToolStripMenuItem;
         private ToolStripMenuItem produtoToolStripMenuItem;
-        private ToolStripMenuItem pedidoToolStripMenuItem;
         private ToolStripMenuItem mesaToolStripMenuItem;
         private ToolStripMenuItem contaToolStripMenuItem;
     }

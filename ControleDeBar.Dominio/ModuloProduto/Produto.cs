@@ -37,5 +37,9 @@ namespace ControleDeBar.Dominio.ModuloProduto
 
             return erros;
         }
+        public override string ToString()
+        {
+            return $"{Nome} -- R${Preco}";
+        }
     }
 }

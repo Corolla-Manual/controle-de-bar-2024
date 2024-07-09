@@ -20,7 +20,7 @@ namespace ControleDeBar.WinApp.ModuloMesa
             grid.Rows.Clear();
 
             foreach (Mesa m in mesas)
-                grid.Rows.Add(m.Id, m.Ocupada?"Ocupada" : "Disponivel", m.NumeroMesa);           
+                grid.Rows.Add(m.Id, m.Ocupada ? "Ocupada" : "Disponivel", m.NumeroMesa);
         }
 
         public int ObterRegistroSelecionado()
@@ -33,7 +33,7 @@ namespace ControleDeBar.WinApp.ModuloMesa
             return new DataGridViewColumn[]
             {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Ocupada", HeaderText = "Ocupada" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Status", HeaderText = "Status" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Número da Mesa", HeaderText = "Número da Mesa" }
             };
         }

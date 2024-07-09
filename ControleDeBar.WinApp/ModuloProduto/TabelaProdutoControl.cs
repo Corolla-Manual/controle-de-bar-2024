@@ -17,7 +17,7 @@ namespace ControleDeBar.WinApp.ModuloProduto
             Grid.Rows.Clear();
 
             foreach (Produto p in produtos)
-                Grid.Rows.Add(p.Id, p.Nome, p.Preco);
+                Grid.Rows.Add(p.Id, p.Nome, "R$" + p.Preco);
         }
 
         public int ObterRegistroSelecionado()

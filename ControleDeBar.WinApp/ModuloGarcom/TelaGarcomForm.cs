@@ -1,21 +1,13 @@
 ﻿using ControleDeBar.Dominio.ModuloGarcom;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using ControleDeBar.WinApp.Compartilhado;
 
-namespace ControleDeBar.WinApp.ModuloGarçom
+namespace ControleDeBar.WinApp.ModuloGarcom
 {
     public partial class TelaGarcomForm : Form
     {
-        public Garcom Garçom
+        public Garcom Garcom
         {
-            get => garçom;
+            get => garcom;
 
             set
             {
@@ -24,25 +16,25 @@ namespace ControleDeBar.WinApp.ModuloGarçom
             }
         }
 
-        private Garcom garçom;
+        private Garcom garcom;
 
-        private List<Garcom> garçomsCadastrados;
+        private List<Garcom> garcomsCadastrados;
 
-        public TelaGarcomForm(List<Garcom> garçomsCadastrados)
+        public TelaGarcomForm(List<Garcom> garcomsCadastrados)
         {
             InitializeComponent();
-
-            this.garçomsCadastrados = garçomsCadastrados;
+            this.ConfigurarDialog();
+            this.garcomsCadastrados = garcomsCadastrados;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            garçom = new Garcom(txtNome.Text, txtCpf.Text);
+            garcom = new Garcom(txtNome.Text.Trim(), txtCpf.Text.Trim());
 
-            List<string> erros = garçom.Validar();
+            List<string> erros = garcom.Validar();
 
-            if (GarçomTemCpfDuplicado())
-                erros.Add("Já existe um garçom com este cpf cadastrado");
+            if (GarcomTemCpfDuplicado())
+                erros.Add("Já existe um garcom com este cpf cadastrado");
 
             if (erros.Count > 0)
             {
@@ -53,9 +45,9 @@ namespace ControleDeBar.WinApp.ModuloGarçom
 
         }
 
-        private bool GarçomTemCpfDuplicado()
+        private bool GarcomTemCpfDuplicado()
         {
-            return garçomsCadastrados.Any(c => c.Cpf == garçom.Cpf);
+            return garcomsCadastrados.Any(c => c.Cpf == garcom.Cpf);
         }
     }
 }

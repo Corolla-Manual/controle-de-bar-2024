@@ -11,9 +11,8 @@ using ControleDeBar.Infra.Orm.ModuloPedido;
 using ControleDeBar.Infra.Orm.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado;
 using ControleDeBar.WinApp.ModuloConta;
-using ControleDeBar.WinApp.ModuloGarçom;
+using ControleDeBar.WinApp.ModuloGarcom;
 using ControleDeBar.WinApp.ModuloMesa;
-using ControleDeBar.WinApp.ModuloPedido;
 using ControleDeBar.WinApp.ModuloProduto;
 
 namespace ControleDeBar.WinApp
@@ -23,7 +22,7 @@ namespace ControleDeBar.WinApp
         ControladorBase controlador;
         IRepositorioProduto repositorioProduto;
         IRepositorioMesa repositorioMesa;
-        IRepositorioGarcom repositorioGar輟m;
+        IRepositorioGarcom repositorioGarcom;
         IRepositorioPedido repositorioPedido;
         IRepositorioConta repositorioConta;
 
@@ -36,9 +35,10 @@ namespace ControleDeBar.WinApp
 
             ControleDeBarDbContext dbContext = new ControleDeBarDbContext();
 
-            repositorioProduto = new RepositorioProduto(dbContext);
+            repositorioProduto = new RepositorioProdutoEmOrm(dbContext);
 
-            repositorioGar輟m = new RepositorioGarcomEmOrm(dbContext);
+
+            repositorioGarcom = new RepositorioGarcomEmOrm(dbContext);
 
             repositorioMesa = new RepositorioMesaEmOrm(dbContext);
             repositorioPedido = new RepositorioPedidoEmOrm(dbContext);
@@ -48,7 +48,7 @@ namespace ControleDeBar.WinApp
 
         private void garcomToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorGarcom(repositorioGar輟m);
+            controlador = new ControladorGarcom(repositorioGarcom);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -64,20 +64,6 @@ namespace ControleDeBar.WinApp
             controlador = new ControladorMesa(repositorioMesa);
             ConfigurarTelaPrincipal(controlador);
         }
-
-
-        private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            controlador = new ControladorPedido(repositorioPedido, repositorioProduto);
-            ConfigurarTelaPrincipal(controlador);
-        }
-
-        private void contaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            controlador = new ControladorConta(repositorioConta);
-            ConfigurarTelaPrincipal(controlador);
-        }
-
         public void AtualizarRodape(string texto)
         {
             statusLabelPrincipal.Text = texto;
