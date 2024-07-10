@@ -1,6 +1,5 @@
 ﻿using ControleDeBar.Dominio.ModuloConta;
 using ControleDeBar.WinApp.Compartilhado;
-using System.Drawing.Text;
 
 namespace ControleDeBar.WinApp.ModuloConta
 {
@@ -47,21 +46,24 @@ namespace ControleDeBar.WinApp.ModuloConta
                 }
             }
 
-            txtLucro.Text = valor.ToString();
+            txtLucro.Text = "R$" + valor;
         }
 
         private void rdbDia_CheckedChanged(object sender, EventArgs e)
         {
+            gbFaturamento.Text = "Faturamento do dia";
             RealizaFaturamento("dia");
         }
 
         private void rdbSemana_CheckedChanged(object sender, EventArgs e)
         {
+            gbFaturamento.Text = "Faturamento da semana";
             RealizaFaturamento("semana");
         }
 
         private void rdbMes_CheckedChanged(object sender, EventArgs e)
         {
+            gbFaturamento.Text = "Faturamento do mês";
             RealizaFaturamento("mes");
         }
     }

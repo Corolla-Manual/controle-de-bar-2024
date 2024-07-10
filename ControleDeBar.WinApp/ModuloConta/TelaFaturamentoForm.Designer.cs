@@ -31,9 +31,10 @@
             rdbDia = new RadioButton();
             rdbMes = new RadioButton();
             rdbSemana = new RadioButton();
-            label1 = new Label();
             txtLucro = new Label();
             button1 = new Button();
+            gbFaturamento = new GroupBox();
+            gbFaturamento.SuspendLayout();
             SuspendLayout();
             // 
             // rdbDia
@@ -69,47 +70,50 @@
             rdbSemana.UseVisualStyleBackColor = true;
             rdbSemana.CheckedChanged += rdbSemana_CheckedChanged;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(246, 71);
-            label1.Name = "label1";
-            label1.Size = new Size(56, 15);
-            label1.TabIndex = 1;
-            label1.Text = "Lucro: R$";
-            // 
             // txtLucro
             // 
             txtLucro.AutoSize = true;
-            txtLucro.Location = new Point(304, 71);
+            txtLucro.Location = new Point(6, 19);
             txtLucro.Name = "txtLucro";
             txtLucro.Size = new Size(13, 15);
             txtLucro.TabIndex = 1;
             txtLucro.Text = "0";
+            txtLucro.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // button1
             // 
             button1.DialogResult = DialogResult.Cancel;
-            button1.Location = new Point(246, 132);
+            button1.Location = new Point(282, 122);
             button1.Name = "button1";
             button1.Size = new Size(96, 25);
             button1.TabIndex = 2;
             button1.Text = "Fechar";
             button1.UseVisualStyleBackColor = true;
             // 
+            // gbFaturamento
+            // 
+            gbFaturamento.Controls.Add(txtLucro);
+            gbFaturamento.Location = new Point(219, 47);
+            gbFaturamento.Name = "gbFaturamento";
+            gbFaturamento.Size = new Size(159, 41);
+            gbFaturamento.TabIndex = 3;
+            gbFaturamento.TabStop = false;
+            gbFaturamento.Text = "Faturamento";
+            // 
             // TelaFaturamentoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(371, 169);
+            ClientSize = new Size(394, 159);
+            Controls.Add(gbFaturamento);
             Controls.Add(button1);
-            Controls.Add(txtLucro);
-            Controls.Add(label1);
             Controls.Add(rdbSemana);
             Controls.Add(rdbMes);
             Controls.Add(rdbDia);
             Name = "TelaFaturamentoForm";
             Text = "Faturamento";
+            gbFaturamento.ResumeLayout(false);
+            gbFaturamento.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -119,8 +123,8 @@
         private RadioButton rdbDia;
         private RadioButton rdbMes;
         private RadioButton rdbSemana;
-        private Label label1;
         private Label txtLucro;
         private Button button1;
+        private GroupBox gbFaturamento;
     }
 }
