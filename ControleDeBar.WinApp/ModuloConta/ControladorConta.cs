@@ -264,7 +264,9 @@ namespace ControleDeBar.WinApp.ModuloConta
 
         public void Faturamento()
         {
-            throw new NotImplementedException();
+            TelaFaturamentoForm telaFaturamento = new TelaFaturamentoForm(repositorioConta.SelecionarTodos());
+
+            telaFaturamento.ShowDialog();
         }
 
         public override UserControl ObterListagem()
