@@ -8,7 +8,7 @@ using ControleDeBar.WinApp.Compartilhado;
 namespace ControleDeBar.WinApp.ModuloConta
 {
     public class ControladorConta : ControladorBase, IControladorAdicionar,
-        IControladorConcluir, IControladorEmAberto, IControladorFaturamento
+        IControladorConcluir, IControladorEmAberto, IControladorFaturamento, IControladorApenasCadastravel
     {
         TabelaContaControl tabelaConta;
 
@@ -68,100 +68,12 @@ namespace ControleDeBar.WinApp.ModuloConta
 
         public override void Editar()
         {
-            int idSelecionado = tabelaConta.ObterRegistroSelecionado();
-
-            Conta contaSelecionada = repositorioConta.SelecionarPorId(idSelecionado);
-
-            if (contaSelecionada == null)
-            {
-                MessageBox.Show(
-                    "Você precisa selecionar um registro para executar esta ação!",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                return;
-            }
-
-            if (contaSelecionada.Concluida)
-            {
-                MessageBox.Show(
-                    "Você não pode editar uma conta já fechada!",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                return;
-            }
-
-            List<Conta> contaCadastradas = repositorioConta.SelecionarTodos();
-
-            TelaContaForm telaConta = new TelaContaForm(repositorioGarcom.SelecionarTodos(), repositorioMesa.SelecionarTodos());
-
-            telaConta.Conta = contaSelecionada;
-
-            contaSelecionada.Mesa.Ocupada = false;
-            repositorioMesa.Editar(contaSelecionada.Mesa.Id, contaSelecionada.Mesa);
-
-            DialogResult resultado = telaConta.ShowDialog();
-
-            if (resultado != DialogResult.OK)
-                return;
-
-
-            Conta registroEditado = telaConta.Conta;
-
-            registroEditado.Mesa.Ocupada = true;
-            repositorioConta.Editar(idSelecionado, registroEditado);
-
-            CarregarRegistros();
-
-            TelaPrincipalForm.Instancia.AtualizarRodape($"A Conta de Id \"{idSelecionado}\" foi editada com sucesso!");
+            //Não é necessário
         }
 
         public override void Excluir()
         {
-            int idSelecionado = tabelaConta.ObterRegistroSelecionado();
-
-            Conta contaSelecionada = repositorioConta.SelecionarPorId(idSelecionado);
-
-            if (contaSelecionada == null)
-            {
-                MessageBox.Show(
-                    "Você precisa selecionar um registro para executar esta ação!",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                return;
-            }
-
-            DialogResult resposta = MessageBox.Show(
-                $"Você deseja realmente excluir a conta de Id \"{contaSelecionada.Id}\" ",
-                "Confirmar Exclusão",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-                );
-
-            if (resposta != DialogResult.Yes)
-                return;
-
-            contaSelecionada.Mesa.Ocupada = false;
-            try
-            {
-                repositorioConta.Excluir(idSelecionado);
-            }
-            catch
-            {
-                contaSelecionada.Mesa.Ocupada = true;
-                TelaPrincipalForm.Instancia.AtualizarRodape($"A Conta de Id\"{contaSelecionada.Id}\" esta em uso " +
-                    $"e não pode ser excluída!");
-                return;
-            }
-
-            CarregarRegistros();
-
-            TelaPrincipalForm.Instancia.AtualizarRodape($"A Conta de Id\"{contaSelecionada.Id}\" foi excluída com sucesso!");
+            //Não é necessário
         }
         public void AdicionarItem()
         {
