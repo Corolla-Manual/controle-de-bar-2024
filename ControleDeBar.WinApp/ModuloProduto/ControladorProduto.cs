@@ -105,7 +105,15 @@ namespace ControleDeBar.WinApp.ModuloProduto
             if (resposta != DialogResult.Yes)
                 return;
 
-            repositorioProduto.Excluir(idSelecionado);
+            try
+            {
+                repositorioProduto.Excluir(idSelecionado);
+            }
+            catch
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{ProdutoSelecionado.Nome}\" esta em uso e não pode ser excluído!");
+                return;
+            }
 
             CarregarRegistros();
 

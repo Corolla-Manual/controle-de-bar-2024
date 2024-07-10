@@ -105,12 +105,19 @@ namespace ControleDeBar.WinApp.ModuloGarcom
 
             if (resposta != DialogResult.Yes)
                 return;
-
-            repositorioGarcom.Excluir(idSelecionado);
+            try
+            {
+                repositorioGarcom.Excluir(idSelecionado);
+            }
+            catch
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{garcomSelecionado.Nome}\" esta em uso e não pode ser excluído!");
+                return;
+            }
 
             CarregarRegistros();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{garcomSelecionado.Nome}\" foi exluído com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{garcomSelecionado.Nome}\" foi excluído com sucesso!");
         }
 
         public override UserControl ObterListagem()

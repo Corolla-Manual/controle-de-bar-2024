@@ -63,7 +63,7 @@ namespace ControleDeBar.WinApp.ModuloConta
 
             CarregarRegistros();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"A Conta de ID \"{novoRegistro.Id}\" foi criada com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"A Conta foi criada com sucesso!");
         }
 
         public override void Editar()
@@ -116,7 +116,7 @@ namespace ControleDeBar.WinApp.ModuloConta
 
             CarregarRegistros();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"A Conta de Id \"{registroEditado.Id}\" foi editada com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"A Conta de Id \"{idSelecionado}\" foi editada com sucesso!");
         }
 
         public override void Excluir()
@@ -147,7 +147,17 @@ namespace ControleDeBar.WinApp.ModuloConta
                 return;
 
             contaSelecionada.Mesa.Ocupada = false;
-            repositorioConta.Excluir(idSelecionado);
+            try
+            {
+                repositorioConta.Excluir(idSelecionado);
+            }
+            catch
+            {
+                contaSelecionada.Mesa.Ocupada = true;
+                TelaPrincipalForm.Instancia.AtualizarRodape($"A Conta de Id\"{contaSelecionada.Id}\" esta em uso " +
+                    $"e não pode ser excluída!");
+                return;
+            }
 
             CarregarRegistros();
 

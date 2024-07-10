@@ -107,7 +107,15 @@ namespace ControleDeBar.WinApp.ModuloMesa
             if (resposta != DialogResult.Yes)
                 return;
 
-            repositorioMesa.Excluir(idSelecionado);
+            try
+            {
+                repositorioMesa.Excluir(idSelecionado);
+            }
+            catch
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{mesaSelecionada.NumeroMesa}\" esta em uso e não pode ser excluído!");
+                return;
+            }
 
             CarregarRegistros();
 
