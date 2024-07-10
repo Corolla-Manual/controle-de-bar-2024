@@ -41,11 +41,12 @@ namespace ControleDeBar.WinApp.ModuloConta
         private void btnGravar_Click(object sender, EventArgs e)
         {
             Garcom garcom = (Garcom)comboBoxGarcom.SelectedItem!;
+
             Mesa mesa = (Mesa)comboBoxMesa.SelectedItem!;
 
             conta = new Conta(mesa, garcom);
 
-            List<string> erros = new List<string>();
+            List<string> erros = conta.Validar();
 
             if (erros.Count > 0)
             {
