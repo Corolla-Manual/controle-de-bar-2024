@@ -19,12 +19,14 @@ namespace ControleDeBar.WinApp.ModuloConta
         private void RealizaFaturamento(string condicao)
         {
             double valor = 0;
+            listBox1.Items.Clear();
 
             if (condicao == "dia")
             {
                 foreach (Conta C in contas.FindAll(x => x.DataConclusao.Date == DateTime.Now.Date))
                 {
                     valor += C.ValorTotal;
+                    listBox1.Items.Add(C);
                 }
             }
 
@@ -35,6 +37,7 @@ namespace ControleDeBar.WinApp.ModuloConta
                 foreach (Conta c in contas.FindAll(x => x.DataConclusao.Date >= semana.Date))
                 {
                     valor += c.ValorTotal;
+                    listBox1.Items.Add(c);
                 }
             }
 
@@ -43,6 +46,7 @@ namespace ControleDeBar.WinApp.ModuloConta
                 foreach (Conta c in contas.FindAll(x => x.DataConclusao.Month == DateTime.Now.Month))
                 {
                     valor += c.ValorTotal;
+                    listBox1.Items.Add(c);
                 }
             }
 

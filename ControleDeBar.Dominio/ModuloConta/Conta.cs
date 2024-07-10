@@ -63,5 +63,9 @@ namespace ControleDeBar.Dominio.ModuloConta
             Concluida = true;
             DataConclusao = DateTime.Now;
         }
+        public override string ToString()
+        {
+            return $"Id: {Id} - Garcom: {Garcom} - Mesa: {Mesa} - Valor Total: R$ {ValorTotal}";
+        }
     }
 }

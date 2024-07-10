@@ -34,13 +34,14 @@
             txtLucro = new Label();
             button1 = new Button();
             gbFaturamento = new GroupBox();
+            listBox1 = new ListBox();
             gbFaturamento.SuspendLayout();
             SuspendLayout();
             // 
             // rdbDia
             // 
             rdbDia.AutoSize = true;
-            rdbDia.Location = new Point(24, 44);
+            rdbDia.Location = new Point(12, 41);
             rdbDia.Name = "rdbDia";
             rdbDia.Size = new Size(161, 19);
             rdbDia.TabIndex = 0;
@@ -51,7 +52,7 @@
             // rdbMes
             // 
             rdbMes.AutoSize = true;
-            rdbMes.Location = new Point(24, 94);
+            rdbMes.Location = new Point(12, 91);
             rdbMes.Name = "rdbMes";
             rdbMes.Size = new Size(167, 19);
             rdbMes.TabIndex = 0;
@@ -62,7 +63,7 @@
             // rdbSemana
             // 
             rdbSemana.AutoSize = true;
-            rdbSemana.Location = new Point(24, 69);
+            rdbSemana.Location = new Point(12, 66);
             rdbSemana.Name = "rdbSemana";
             rdbSemana.Size = new Size(185, 19);
             rdbSemana.TabIndex = 0;
@@ -83,7 +84,7 @@
             // button1
             // 
             button1.DialogResult = DialogResult.Cancel;
-            button1.Location = new Point(282, 122);
+            button1.Location = new Point(286, 342);
             button1.Name = "button1";
             button1.Size = new Size(96, 25);
             button1.TabIndex = 2;
@@ -93,18 +94,28 @@
             // gbFaturamento
             // 
             gbFaturamento.Controls.Add(txtLucro);
-            gbFaturamento.Location = new Point(219, 47);
+            gbFaturamento.Location = new Point(223, 44);
             gbFaturamento.Name = "gbFaturamento";
             gbFaturamento.Size = new Size(159, 41);
             gbFaturamento.TabIndex = 3;
             gbFaturamento.TabStop = false;
             gbFaturamento.Text = "Faturamento";
             // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(12, 135);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(370, 199);
+            listBox1.TabIndex = 4;
+            // 
             // TelaFaturamentoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(394, 159);
+            ClientSize = new Size(394, 379);
+            Controls.Add(listBox1);
             Controls.Add(gbFaturamento);
             Controls.Add(button1);
             Controls.Add(rdbSemana);
@@ -126,5 +137,6 @@
         private Label txtLucro;
         private Button button1;
         private GroupBox gbFaturamento;
+        private ListBox listBox1;
     }
 }
