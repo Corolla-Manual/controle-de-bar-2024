@@ -1,5 +1,6 @@
 ﻿using ControleDeBar.Dominio.ModuloConta;
 using ControleDeBar.Infra.Orm.Compartilhada;
+using Microsoft.EntityFrameworkCore;
 
 namespace ControleDeBar.Infra.Orm.ModuloConta
 {
@@ -44,6 +45,11 @@ namespace ControleDeBar.Infra.Orm.ModuloConta
             return true;
         }
 
+        public List<Conta> SelecionarEmAberto()
+        {
+            return dbContext.Contas.Include(c => c.Mesa).Include(c => c.Garcom).Include(c => c.Pedidos).Where(c => c.Concluida == false).ToList();
+        }
+
         public Conta SelecionarPorId(int idSelecionado)
         {
             return dbContext.Contas.Find(idSelecionado);
@@ -51,7 +57,7 @@ namespace ControleDeBar.Infra.Orm.ModuloConta
 
         public List<Conta> SelecionarTodos()
         {
-            return dbContext.Contas.ToList();
+            return dbContext.Contas.Include(c => c.Mesa).Include(c => c.Garcom).Include(c => c.Pedidos).ToList();
         }
     }
 }

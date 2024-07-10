@@ -70,9 +70,11 @@
             // 
             numMesa.Location = new Point(146, 73);
             numMesa.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+            numMesa.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numMesa.Name = "numMesa";
             numMesa.Size = new Size(120, 23);
             numMesa.TabIndex = 3;
+            numMesa.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // TelaMesaForm
             // 

@@ -41,13 +41,13 @@
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
+            btn_AdicionarPedido = new ToolStripButton();
+            btn_FecharConta = new ToolStripButton();
             btn_ContasEmAberto = new ToolStripButton();
+            btn_Faturamento = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
             lblTipoCadastro = new ToolStripLabel();
             pnlRegistros = new Panel();
-            btn_AdicionarPedido = new ToolStripButton();
-            btn_FecharConta = new ToolStripButton();
-            btn_Faturamento = new ToolStripButton();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -164,8 +164,35 @@
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(6, 41);
             // 
+            // btn_AdicionarPedido
+            // 
+            btn_AdicionarPedido.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btn_AdicionarPedido.Enabled = false;
+            btn_AdicionarPedido.Image = Properties.Resources.btn_RegistrarPedido;
+            btn_AdicionarPedido.ImageScaling = ToolStripItemImageScaling.None;
+            btn_AdicionarPedido.ImageTransparentColor = Color.Magenta;
+            btn_AdicionarPedido.Name = "btn_AdicionarPedido";
+            btn_AdicionarPedido.Padding = new Padding(5);
+            btn_AdicionarPedido.Size = new Size(38, 38);
+            btn_AdicionarPedido.Text = "toolStripButton1";
+            btn_AdicionarPedido.Click += btn_AdicionarPedido_Click;
+            // 
+            // btn_FecharConta
+            // 
+            btn_FecharConta.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btn_FecharConta.Enabled = false;
+            btn_FecharConta.Image = Properties.Resources.btn_FecharConta;
+            btn_FecharConta.ImageScaling = ToolStripItemImageScaling.None;
+            btn_FecharConta.ImageTransparentColor = Color.Magenta;
+            btn_FecharConta.Name = "btn_FecharConta";
+            btn_FecharConta.Padding = new Padding(5);
+            btn_FecharConta.Size = new Size(38, 38);
+            btn_FecharConta.Text = "toolStripButton1";
+            btn_FecharConta.Click += btn_FecharConta_Click;
+            // 
             // btn_ContasEmAberto
             // 
+            btn_ContasEmAberto.BackColor = SystemColors.Control;
             btn_ContasEmAberto.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btn_ContasEmAberto.Enabled = false;
             btn_ContasEmAberto.Image = Properties.Resources.btnVisualizar;
@@ -175,6 +202,19 @@
             btn_ContasEmAberto.Padding = new Padding(5);
             btn_ContasEmAberto.Size = new Size(38, 38);
             btn_ContasEmAberto.Click += btnVisualizar_Click;
+            // 
+            // btn_Faturamento
+            // 
+            btn_Faturamento.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btn_Faturamento.Enabled = false;
+            btn_Faturamento.Image = Properties.Resources.btn_Faturamento;
+            btn_Faturamento.ImageScaling = ToolStripItemImageScaling.None;
+            btn_Faturamento.ImageTransparentColor = Color.Magenta;
+            btn_Faturamento.Name = "btn_Faturamento";
+            btn_Faturamento.Padding = new Padding(5);
+            btn_Faturamento.Size = new Size(38, 38);
+            btn_Faturamento.Text = "toolStripButton1";
+            btn_Faturamento.Click += btn_Faturamento_Click;
             // 
             // toolStripSeparator3
             // 
@@ -195,42 +235,6 @@
             pnlRegistros.Name = "pnlRegistros";
             pnlRegistros.Size = new Size(800, 356);
             pnlRegistros.TabIndex = 3;
-            // 
-            // btn_AdicionarPedido
-            // 
-            btn_AdicionarPedido.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btn_AdicionarPedido.Enabled = false;
-            btn_AdicionarPedido.Image = Properties.Resources.btn_RegistrarPedido;
-            btn_AdicionarPedido.ImageScaling = ToolStripItemImageScaling.None;
-            btn_AdicionarPedido.ImageTransparentColor = Color.Magenta;
-            btn_AdicionarPedido.Name = "btn_AdicionarPedido";
-            btn_AdicionarPedido.Padding = new Padding(5);
-            btn_AdicionarPedido.Size = new Size(38, 38);
-            btn_AdicionarPedido.Text = "toolStripButton1";
-            // 
-            // btn_FecharConta
-            // 
-            btn_FecharConta.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btn_FecharConta.Enabled = false;
-            btn_FecharConta.Image = Properties.Resources.btn_FecharConta;
-            btn_FecharConta.ImageScaling = ToolStripItemImageScaling.None;
-            btn_FecharConta.ImageTransparentColor = Color.Magenta;
-            btn_FecharConta.Name = "btn_FecharConta";
-            btn_FecharConta.Padding = new Padding(5);
-            btn_FecharConta.Size = new Size(38, 38);
-            btn_FecharConta.Text = "toolStripButton1";
-            // 
-            // btn_Faturamento
-            // 
-            btn_Faturamento.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btn_Faturamento.Enabled = false;
-            btn_Faturamento.Image = Properties.Resources.btn_Faturamento;
-            btn_Faturamento.ImageScaling = ToolStripItemImageScaling.None;
-            btn_Faturamento.ImageTransparentColor = Color.Magenta;
-            btn_Faturamento.Name = "btn_Faturamento";
-            btn_Faturamento.Padding = new Padding(5);
-            btn_Faturamento.Size = new Size(38, 38);
-            btn_Faturamento.Text = "toolStripButton1";
             // 
             // TelaPrincipalForm
             // 

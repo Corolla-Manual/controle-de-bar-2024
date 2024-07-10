@@ -76,7 +76,7 @@
             btnGravar.Location = new Point(106, 180);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(89, 30);
-            btnGravar.TabIndex = 3;
+            btnGravar.TabIndex = 2;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;
@@ -87,7 +87,7 @@
             button1.Location = new Point(203, 180);
             button1.Name = "button1";
             button1.Size = new Size(89, 30);
-            button1.TabIndex = 2;
+            button1.TabIndex = 3;
             button1.Text = "Cancelar";
             button1.UseVisualStyleBackColor = true;
             // 

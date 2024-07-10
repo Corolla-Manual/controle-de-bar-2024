@@ -12,7 +12,7 @@ namespace ControleDeBar.Dominio.ModuloPedido
         {
 
         }
-        public Pedido(int numeroPedido, Produto produto, int quantidade)
+        public Pedido(Produto produto, int quantidade)
         {
             Produto = produto;
             Quantidade = quantidade;
@@ -25,6 +25,8 @@ namespace ControleDeBar.Dominio.ModuloPedido
             if (Produto == null)
                 erros.Add("O campo \"Produto\" é obrigatório!");
 
+            if (Quantidade <= 0)
+                erros.Add("O campo \"Quantidade\" é obrigatório!");
             return erros;
         }
 

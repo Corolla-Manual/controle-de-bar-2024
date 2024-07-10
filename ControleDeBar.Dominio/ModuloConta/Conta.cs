@@ -1,14 +1,13 @@
 ﻿using ControleDeBar.Dominio.Compartilhado;
-using ControleDeBar.Dominio.ModuloPedido;
-using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Dominio.ModuloGarcom;
-using System.Drawing;
+using ControleDeBar.Dominio.ModuloMesa;
+using ControleDeBar.Dominio.ModuloPedido;
 
 namespace ControleDeBar.Dominio.ModuloConta
 {
     public class Conta : EntidadeBase
     {
-        public List<Pedido> Pedidos {get; set;}
+        public List<Pedido> Pedidos { get; set; }
         public Mesa Mesa { get; set; }
         public Garcom Garcom { get; set; }
         public double ValorTotal { get; set; }
@@ -16,16 +15,16 @@ namespace ControleDeBar.Dominio.ModuloConta
 
         public Conta()
         {
-            
+
         }
 
-        public Conta(List<Pedido> pedidos, Mesa mesa, Garcom garcom, double valorTotal, bool concluida)
+        public Conta(Mesa mesa, Garcom garcom)
         {
-            Pedidos = pedidos;
             Mesa = mesa;
             Garcom = garcom;
-            ValorTotal = valorTotal;
-            Concluida = concluida;
+            Pedidos = new List<Pedido>();
+            ValorTotal = 0;
+            Concluida = false;
         }
         public override List<string> Validar()
         {
@@ -49,6 +48,14 @@ namespace ControleDeBar.Dominio.ModuloConta
             Garcom = conta.Garcom;
             ValorTotal = conta.ValorTotal;
             Concluida = conta.Concluida;
+        }
+        public void CalcularValorTotal()
+        {
+            ValorTotal = 0;
+            foreach (Pedido p in Pedidos)
+            {
+                ValorTotal += p.CalcularValor();
+            }
         }
 
     }

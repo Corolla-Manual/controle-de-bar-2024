@@ -1,7 +1,6 @@
 ﻿using ControleDeBar.Dominio.ModuloConta;
 using ControleDeBar.Dominio.ModuloGarcom;
 using ControleDeBar.Dominio.ModuloMesa;
-using ControleDeBar.Dominio.ModuloPedido;
 using ControleDeBar.WinApp.Compartilhado;
 
 namespace ControleDeBar.WinApp.ModuloConta
@@ -19,13 +18,24 @@ namespace ControleDeBar.WinApp.ModuloConta
             }
         }
 
-        private List<Conta> contasCadastradas;
-
-        public TelaContaForm(List<Conta> contasCadastradas)
+        public TelaContaForm(List<Garcom> garcons, List<Mesa> mesas)
         {
             InitializeComponent();
             this.ConfigurarDialog();
-            this.contasCadastradas = contasCadastradas;
+            CarregarComboBox(garcons, mesas);
+        }
+
+        private void CarregarComboBox(List<Garcom> garcons, List<Mesa> mesas)
+        {
+            foreach (Garcom g in garcons)
+            {
+                comboBoxGarcom.Items.Add(g);
+            }
+            foreach (Mesa m in mesas)
+            {
+                if (!m.Ocupada)
+                    comboBoxMesa.Items.Add(m);
+            }
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -33,9 +43,7 @@ namespace ControleDeBar.WinApp.ModuloConta
             Garcom garcom = (Garcom)comboBoxGarcom.SelectedItem!;
             Mesa mesa = (Mesa)comboBoxMesa.SelectedItem!;
 
-            List<Pedido> pedidos = new List<Pedido>();
-
-            conta = new Conta(pedidos, mesa, garcom, 0, false);
+            conta = new Conta(mesa, garcom);
 
             List<string> erros = new List<string>();
 

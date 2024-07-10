@@ -61,7 +61,8 @@ namespace ControleDeBar.WinApp
         }
         private void contaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorConta(repositorioConta);
+            controlador = new ControladorConta(repositorioConta, repositorioMesa,
+                repositorioPedido, repositorioGarcom, repositorioProduto);
             ConfigurarTelaPrincipal(controlador);
         }
         public void AtualizarRodape(string texto)
@@ -83,8 +84,10 @@ namespace ControleDeBar.WinApp
             btnEditar.Enabled = controladorSelecionado is ControladorBase;
             btnExcluir.Enabled = controladorSelecionado is ControladorBase;
 
-            btn_ContasEmAberto.Enabled = controladorSelecionado is IControladorVisualizavel;
-
+            btn_ContasEmAberto.Enabled = controladorSelecionado is IControladorEmAberto;
+            btn_AdicionarPedido.Enabled = controladorSelecionado is IControladorAdicionar;
+            btn_FecharConta.Enabled = controladorSelecionado is IControladorConcluir;
+            btn_Faturamento.Enabled = controladorSelecionado is IControladorFaturamento;
             ConfigurarToolTips(controladorSelecionado);
         }
 
@@ -94,9 +97,17 @@ namespace ControleDeBar.WinApp
             btnEditar.ToolTipText = controladorSelecionado.ToolTipEditar;
             btnExcluir.ToolTipText = controladorSelecionado.ToolTipExcluir;
 
-            if (controladorSelecionado is IControladorVisualizavel controladorVisualizavel)
-                btn_ContasEmAberto.ToolTipText = controladorVisualizavel.ToolTipVisualizar;
+            if (controladorSelecionado is IControladorEmAberto controladorVisualizavel)
+                btn_ContasEmAberto.ToolTipText = controladorVisualizavel.ToolTipVisualizarEmAberto;
 
+            if (controladorSelecionado is IControladorFaturamento controladorFaturamento)
+                btn_Faturamento.ToolTipText = controladorFaturamento.ToolTipFaturamento;
+
+            if (controladorSelecionado is IControladorConcluir controladorConcluir)
+                btn_FecharConta.ToolTipText = controladorConcluir.ToolTipConcluir;
+
+            if (controladorSelecionado is IControladorAdicionar controladorAdicionar)
+                btn_AdicionarPedido.ToolTipText = controladorAdicionar.ToolTipAdicionarItem;
         }
 
         private void ConfigurarListagem(ControladorBase controladorSelecionado)
@@ -125,14 +136,30 @@ namespace ControleDeBar.WinApp
 
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
-            if (controlador is IControladorVisualizavel controladorVisualizavel)
-                controladorVisualizavel.Visualizar();
+            if (controlador is IControladorEmAberto controladorVisualizavel)
+                controladorVisualizavel.VisualizarEmAberto(btn_ContasEmAberto);
+
+        }
+        private void btn_AdicionarPedido_Click(object sender, EventArgs e)
+        {
+            if (controlador is IControladorAdicionar controladorAdicionar)
+                controladorAdicionar.AdicionarItem();
+        }
+
+        private void btn_FecharConta_Click(object sender, EventArgs e)
+        {
+            if (controlador is IControladorConcluir controladorConcluir)
+                controladorConcluir.Concluir();
+        }
+
+        private void btn_Faturamento_Click(object sender, EventArgs e)
+        {
+            if (controlador is IControladorFaturamento controladorFaturamento)
+                controladorFaturamento.Faturamento();
         }
         private void TelaPrincipalForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
-
-
     }
 }
