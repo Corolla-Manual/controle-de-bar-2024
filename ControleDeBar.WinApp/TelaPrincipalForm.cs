@@ -88,6 +88,13 @@ namespace ControleDeBar.WinApp
             btn_AdicionarPedido.Enabled = controladorSelecionado is IControladorAdicionar;
             btn_FecharConta.Enabled = controladorSelecionado is IControladorConcluir;
             btn_Faturamento.Enabled = controladorSelecionado is IControladorFaturamento;
+
+            if (controladorSelecionado is IControladorApenasCadastravel)
+            {
+                btnEditar.Enabled = false;
+                btnExcluir.Enabled = false;
+            }
+
             ConfigurarToolTips(controladorSelecionado);
         }
 
