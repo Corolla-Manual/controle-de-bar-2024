@@ -12,7 +12,7 @@ namespace ControleDeBar.Dominio.ModuloConta
         public Garcom Garcom { get; set; }
         public double ValorTotal { get; set; }
         public bool Concluida { get; set; }
-
+        public DateTime DataConclusao { get; set; }
         public Conta()
         {
 
@@ -25,6 +25,7 @@ namespace ControleDeBar.Dominio.ModuloConta
             Pedidos = new List<Pedido>();
             ValorTotal = 0;
             Concluida = false;
+            DataConclusao = DateTime.Parse("01/01/2000");
         }
         public override List<string> Validar()
         {
@@ -57,6 +58,10 @@ namespace ControleDeBar.Dominio.ModuloConta
                 ValorTotal += p.CalcularValor();
             }
         }
-
+        public void Concluir()
+        {
+            Concluida = true;
+            DataConclusao = DateTime.Now;
+        }
     }
 }

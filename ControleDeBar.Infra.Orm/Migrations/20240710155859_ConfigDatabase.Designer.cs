@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleDeBar.Infra.Orm.Migrations
 {
     [DbContext(typeof(ControleDeBarDbContext))]
-    [Migration("20240709193030_ConfigDatabaseV2")]
-    partial class ConfigDatabaseV2
+    [Migration("20240710155859_ConfigDatabase")]
+    partial class ConfigDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,6 +35,9 @@ namespace ControleDeBar.Infra.Orm.Migrations
 
                     b.Property<bool>("Concluida")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime>("DataConclusao")
+                        .HasColumnType("datetime");
 
                     b.Property<int>("Garcom_Id")
                         .HasColumnType("int");

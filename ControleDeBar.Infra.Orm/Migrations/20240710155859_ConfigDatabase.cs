@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace ControleDeBar.Infra.Orm.Migrations
 {
     /// <inheritdoc />
-    public partial class ConfigDatabaseV2 : Migration
+    public partial class ConfigDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -61,7 +62,8 @@ namespace ControleDeBar.Infra.Orm.Migrations
                     Mesa_Id = table.Column<int>(type: "int", nullable: false),
                     Garcom_Id = table.Column<int>(type: "int", nullable: false),
                     ValorTotal = table.Column<float>(type: "real", nullable: false),
-                    Concluida = table.Column<bool>(type: "bit", nullable: false)
+                    Concluida = table.Column<bool>(type: "bit", nullable: false),
+                    DataConclusao = table.Column<DateTime>(type: "datetime", nullable: false)
                 },
                 constraints: table =>
                 {

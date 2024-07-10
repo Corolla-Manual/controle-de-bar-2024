@@ -33,6 +33,9 @@ namespace ControleDeBar.Infra.Orm.Migrations
                     b.Property<bool>("Concluida")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime>("DataConclusao")
+                        .HasColumnType("datetime");
+
                     b.Property<int>("Garcom_Id")
                         .HasColumnType("int");
 

@@ -18,7 +18,8 @@ namespace ControleDeBar.WinApp.ModuloConta
             grid.Rows.Clear();
 
             foreach (Conta c in contas)
-                grid.Rows.Add(c.Id, c.Mesa, c.Garcom, c.Concluida ? "Concluído" : "Em Aberto", "R$" + c.ValorTotal);
+                grid.Rows.Add(c.Id, c.Mesa, c.Garcom, c.Concluida ? "Concluído" : "Em Aberto", "R$" + c.ValorTotal,
+                    c.DataConclusao == DateTime.Parse("01/01/2000") ? "" : c.DataConclusao.ToShortDateString());
         }
         public int ObterRegistroSelecionado()
         {
@@ -33,7 +34,8 @@ namespace ControleDeBar.WinApp.ModuloConta
                 new DataGridViewTextBoxColumn { DataPropertyName = "Mesa", HeaderText = "Mesa" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Garcom", HeaderText = "Garcom" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Concluida", HeaderText = "Concluida" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "ValorTotal", HeaderText = "ValorTotal" }
+                new DataGridViewTextBoxColumn { DataPropertyName = "ValorTotal", HeaderText = "Valor Total" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "DataConclusao", HeaderText = "Data da Conclusão" }
             };
         }
     }

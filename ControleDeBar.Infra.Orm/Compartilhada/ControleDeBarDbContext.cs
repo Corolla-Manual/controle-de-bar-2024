@@ -109,6 +109,9 @@ namespace ControleDeBar.Infra.Orm.Compartilhada
                     .IsRequired()
                     .ValueGeneratedOnAdd();
 
+                contaBuilder.Property(c => c.DataConclusao)
+                .HasColumnType("datetime");
+
                 contaBuilder.HasMany(c => c.Pedidos)
                     .WithOne()
                     .HasForeignKey("Conta_Id")

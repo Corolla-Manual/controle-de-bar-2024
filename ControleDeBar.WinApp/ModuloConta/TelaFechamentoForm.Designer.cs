@@ -94,7 +94,6 @@
             txtMesa.Size = new Size(38, 15);
             txtMesa.TabIndex = 5;
             txtMesa.Text = "label5";
-            txtMesa.Click += txtMesa_Click;
             // 
             // txtGarcom
             // 

@@ -31,12 +31,7 @@ namespace ControleDeBar.WinApp.ModuloConta
         private void btnConcluir_Click(object sender, EventArgs e)
         {
             conta.Mesa.Ocupada = false;
-            conta.Concluida = true;
-        }
-
-        private void txtMesa_Click(object sender, EventArgs e)
-        {
-
+            conta.Concluir();
         }
     }
 }
