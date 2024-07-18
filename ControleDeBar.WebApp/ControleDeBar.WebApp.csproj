@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Html\listar-mesas.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Html\editar-mesa-form.html" />
+    <None Remove="Html\inserir-mesa-form.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Html\editar-mesa-form.html" />
+    <Content Include="Html\inserir-mesa-form.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ControleDeBar.Dominio\ControleDeBar.Dominio.csproj" />
+    <ProjectReference Include="..\ControleDeBar.Infra.Orm\ControleDeBar.Infra.Orm.csproj" />
+  </ItemGroup>
+
+</Project>
