@@ -9,8 +9,7 @@ namespace ControleDeBar.WebApp.Controllers;
 
 public class MesaController : Controller
 {
-    [HttpGet, ActionName("listar")]
-    public ViewResult ListarMesas()
+    public ViewResult Listar()
     {
         ControleDeBarDbContext db = new ControleDeBarDbContext();
         IRepositorioMesa repositorioMesa = new RepositorioMesaEmOrm(db);
@@ -19,20 +18,16 @@ public class MesaController : Controller
 
         ViewBag.Mesa = mesas;
 
-        return View("listar-mesas");
+        return View();
     }
 
-    [HttpGet, ActionName("inserir")]
-    public Task ExibirFormularioInserirMesa()
+    public ViewResult Inserir()
     {
-        // HTML
-        string form = System.IO.File.ReadAllText("Html/inserir-mesa-form.html");
-
-        return HttpContext.Response.WriteAsync(form);
+        return View();
     }
 
-    [HttpPost, ActionName("inserir")]
-    public Task InserirMesa(Mesa novaMesa) // data bindind
+    [HttpPost]
+    public ViewResult Inserir(Mesa novaMesa) // data bindind
     {
         ControleDeBarDbContext db = new ControleDeBarDbContext();
         IRepositorioMesa repositorioMesa = new RepositorioMesaEmOrm(db);
@@ -41,35 +36,25 @@ public class MesaController : Controller
 
         HttpContext.Response.StatusCode = 201;
 
-        string html = System.IO.File.ReadAllText("Html/mensagens-mesa.html");
+        ViewBag.Mensagem = $"O registro com o ID {novaMesa.Id} foi cadastrado com sucesso!";
 
-        html = html.Replace("#mensagem#", $"A mesa \"{novaMesa.Id}\" foi cadastrada com sucesso!");
-
-        return HttpContext.Response.WriteAsync(html);
+        return View("mensagens");
     }
 
-    [HttpGet, ActionName("editar")]
-    public Task ExibirFormularioEditarMesa(int id)
+    public ViewResult Editar(int id)
     {
         ControleDeBarDbContext db = new ControleDeBarDbContext();
         IRepositorioMesa repositorioMesa = new RepositorioMesaEmOrm(db);
 
         Mesa mesa = repositorioMesa.SelecionarPorId(id);
 
-        string html = System.IO.File.ReadAllText("Html/editar-mesa-form.html");
+        ViewBag.Mesa = mesa;
 
-        html = html.Replace("#id#", mesa.Id.ToString());
-
-        html = html.Replace("numero", mesa.NumeroMesa.ToString());
-
-        if (mesa.Ocupada)
-            html = html.Replace("<input name=\"ocupada\" type=\"checkbox\" />", "<input name=\"ocupada\"> ");
-
-        return HttpContext.Response.WriteAsync(html);
+        return View();
     }
 
-    [HttpPost, ActionName("editar")]
-    public Task EditarMesa(int id, Mesa mesaAtualizada)
+    [HttpPost]
+    public ViewResult Editar(int id, Mesa mesaAtualizada)
     {
         ControleDeBarDbContext db = new ControleDeBarDbContext();
         IRepositorioMesa repositorioMesa = new RepositorioMesaEmOrm(db);
@@ -80,34 +65,25 @@ public class MesaController : Controller
 
         repositorioMesa.Editar(mesaOriginal.Id, mesaOriginal);
 
-        string html = System.IO.File.ReadAllText("html/mensagens-mesa.html");
+        ViewBag.Mensagem = $"O registro com o ID {mesaOriginal.Id} foi editado com sucesso!";
 
-        html = html.Replace("#mensagem#", $"A mesa id \"{mesaOriginal.Id}\" foi editada com sucesso!");
-
-        return HttpContext.Response.WriteAsync(html);
+        return View("mensagens");
     }
 
-    [HttpGet, ActionName("excluir")]
-    public Task ExibirFormularioExcluirMesa(int id)
+    public ViewResult Excluir(int id)
     {
         ControleDeBarDbContext db = new ControleDeBarDbContext();
         IRepositorioMesa repositorioMesa = new RepositorioMesaEmOrm(db);
 
         Mesa mesa = repositorioMesa.SelecionarPorId(id);
 
-        string html = System.IO.File.ReadAllText("Html/excluir-mesa-form.html");
+        ViewBag.Mesa = mesa;
 
-        StringBuilder sb = new StringBuilder(html);
-
-        sb.Replace("#numeromesa#", mesa.NumeroMesa.ToString());
-
-        sb.Replace("#id#", mesa.Id.ToString());
-
-        return HttpContext.Response.WriteAsync(sb.ToString());
+        return View();
     }
 
     [HttpPost, ActionName("excluir")]
-    public Task ExcluirMesa(int id)
+    public ViewResult ExcluirMesa(int id)
     {
         ControleDeBarDbContext db = new ControleDeBarDbContext();
         IRepositorioMesa repositorioMesa = new RepositorioMesaEmOrm(db);
@@ -118,43 +94,20 @@ public class MesaController : Controller
 
         HttpContext.Response.StatusCode = 200;
 
-        string html = System.IO.File.ReadAllText("Html/mensagens-mesa.html");
+        ViewBag.Mensagem = $"O registro com o ID {mesa.Id} foi excluido com sucesso!";
 
-        StringBuilder sb = new StringBuilder();
-
-        sb.Replace("#mensagem#", $"A mesa id \"{mesa.Id}\" foi excluida com sucesso!");
-
-        return HttpContext.Response.WriteAsync(sb.ToString());
+        return View("mensagens");
     }
 
-    [HttpGet, ActionName("detalhes")]
-    public Task ExibirPaginasDetalhesMesa(int id)
+    public ViewResult Detalhes(int id)
     {
         ControleDeBarDbContext db = new ControleDeBarDbContext();
         IRepositorioMesa repositorioMesa = new RepositorioMesaEmOrm(db);
 
         Mesa mesa = repositorioMesa.SelecionarPorId(id);
 
-        string html = System.IO.File.ReadAllText("Html/detalhes-mesa.html");
+        ViewBag.Mesa = mesa;
 
-        StringBuilder detalhes = new StringBuilder();
-
-        detalhes.AppendLine("#id#" + mesa.Id.ToString());
-        detalhes.AppendLine("#numero#" + mesa.ToString());
-        detalhes.AppendLine("#status#" + (mesa.Ocupada ? "Ocupada" : "Livre"));
-
-        detalhes.AppendLine();
-
-        if (mesa.Contas.Count > 0)
-        {
-            foreach (Conta c in mesa.Contas)
-                detalhes.Replace("#conta#", $"<li>{c.ToString()}</li> #conta#");
-
-            detalhes.Replace("#conta", "");
-        }
-
-        return HttpContext.Response.WriteAsync(detalhes.ToString());
+        return View();
     }
-
-
 }

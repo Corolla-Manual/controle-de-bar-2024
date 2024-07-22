@@ -7,22 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Html\listar-mesas.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Html\editar-mesa-form.html" />
-    <None Remove="Html\inserir-mesa-form.html" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Html\editar-mesa-form.html" />
-    <Content Include="Html\inserir-mesa-form.html" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ControleDeBar.Dominio\ControleDeBar.Dominio.csproj" />
     <ProjectReference Include="..\ControleDeBar.Infra.Orm\ControleDeBar.Infra.Orm.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Mesa\detalhes.cshtml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Mesa\editar.cshtml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Mesa\excluir.cshtml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Mesa\inserir.cshtml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Mesa\listar.cshtml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Mesa\mensagens.cshtml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
